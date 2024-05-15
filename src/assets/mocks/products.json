@@ -1,0 +1,49 @@
+[
+  {
+    "id": 1,
+    "ProductName": "Organic Gala Apples",
+    "ExpirationDate": "June 15,2024",
+    "StorageTips": "keep Refrigerated to extend freshness",
+    "Image": "https://target.scene7.com/is/image/Target/GUEST_c9ac25cc-247c-452d-ada7-11f114f0547e?wid=488&hei=488&fmt=pjpeg"
+  },
+
+  {
+    "id": 2,
+    "ProductName": "Whole Wheat bread",
+    "ExpirationDate": " May 10,2024",
+    "StorageTips": "Store in a cool,Dry  place",
+    "Image": "https://i5.walmartimages.com/seo/Nature-s-Own-Honey-Wheat-Sandwich-Bread-Loaf-20-oz_a5b0f0eb-e22e-47c6-9aae-9c12fc794e2a.e42015f7c6ce36153518fd18f6b0eb96.jpeg"
+  },
+
+  {
+    "id": 3,
+    "ProductName": "Omega-3 Fish oil capsules",
+    "ExpirationDate": "December 1,2025",
+    "StorageTips": "Store At Room Temperature",
+    "Image": "https://americanproductbynikita.com/146-thickbox/omega-3-fish-oil-1000-mg-100-softgels.jpg"
+  },
+
+  {
+    "id": 4,
+    "ProductName": "Protein Powder",
+    "ExpirationDate": "May 1, 2026",
+    "StorageTips": "Keep in a dry place away from direct sunlight; ensure lid is tightly closed after use",
+    "Image": "https://m.media-amazon.com/images/I/71gxGnJ4siL.jpg"
+  },
+
+  {
+    "id": 5,
+    "ProductName": "Natural Yogurt",
+    "ExpirationDate": "September 15, 2024",
+    "StorageTips": "Keep refrigerated and consume within 5 days of opening",
+    "Image": "https://www.lsa-conso.fr/mediatheque/7/1/5/000185517_896x598_c.png"
+  },
+
+  {
+    "id": 6,
+    "ProductName": "Almond Milk",
+    "ExpirationDate": "August 20, 2024",
+    "StorageTips": "Refrigerate after opening and use within 7 days",
+    "Image": "https://woodsfoodservice.co.uk/media/catalog/product/cache/57f672bc8bb1863d192ed0e81c28e78b/3/a/3ace7ff186351946b63f2083702a839c.jpg"
+  }
+]

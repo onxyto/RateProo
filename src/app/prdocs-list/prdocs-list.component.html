@@ -1,0 +1,13 @@
+<div id="ap">
+  <h3>Get your products here</h3>
+</div>
+<ion-content>
+  <div id="container" *ngFor="let products of Productdetail; let i = index">
+    <h1>{{ products.ProductName }}</h1>
+    <p>{{ products.ExpirationDate }}</p>
+    <img src="{{ products.Image }}" />
+    <div id="op">
+      <h1>{{ products.StorageTips }}</h1>
+    </div>
+  </div>
+</ion-content>

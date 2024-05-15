@@ -1,0 +1,32 @@
+.ion-padding {
+  padding: 20px;
+  text-align: left;
+  .pad {
+    margin-top: 20px;
+  }
+}
+ion-item {
+  margin-top: 10px;
+  border-radius: 15px;
+  --background: #d6d0d0;
+  margin-bottom: 15px;
+}
+ion-content {
+  --background: rebeccapurple;
+}
+ion-card {
+  margin-top: 200px;
+}
+.text {
+  text-align: center;
+  h2 {
+    font-size: 30px;
+    font-weight: 800;
+    color: rgb(182, 102, 162);
+  }
+  p {
+    color: rgb(182, 102, 162);
+    font-size: 20px;
+    font-weight: 500;
+  }
+}

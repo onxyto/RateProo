@@ -1,0 +1,46 @@
+ion-content {
+  --background: url(../../assets/scananime.jpg) 0 0/100% 70% no-repeat;
+}
+.container {
+  padding: 50px;
+  margin-top: 2vh;
+  display: flex;
+  justify-content: center;
+
+  ion-img {
+    margin-top: 4vh;
+    width: 350px;
+  }
+}
+.card-container {
+  background-color: white;
+  margin-top: 20vh;
+  top: 50%;
+  left: 5px;
+  right: 5px;
+  position: absolute;
+  margin-bottom: 5vh;
+  text-align: center;
+  h1 {
+    font-weight: 700;
+    font-size: 30px;
+
+    color: var(--ion-color-dark-tint);
+  }
+  h2 {
+    font-size: 15;
+    font-weight: 500;
+    color: var(--ion-color-dark-tint);
+  }
+}
+.text-warning {
+  color: var(--ion-color-primary);
+}
+.text {
+  color: var(--ion-color-secondary);
+  font-size: 30px;
+}
+.header {
+  background-color: rebeccapurple;
+  border-radius: 50px;
+}
