@@ -32,7 +32,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./landing/landing.page').then((m) => m.LandingPage),
   },
-
+  /**test */
   {
     path: 'signup',
     loadComponent: () =>
