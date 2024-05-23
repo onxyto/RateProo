@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../products.service';
+import { ProductsService } from '../../shared/services/products.service';
 import { CommonModule, NgForOf } from '@angular/common';
 import { IonContent, IonItem } from '@ionic/angular/standalone';
 

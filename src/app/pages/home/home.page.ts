@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -14,12 +14,25 @@ import {
   IonInput,
   IonFab,
   IonFabButton,
+  IonTabs,
+  IonTabBar,
+  IonTabButton,
 } from '@ionic/angular/standalone';
-import { ProductsService } from '../products.service';
+import { ProductsService } from '../../shared/services/products.service';
 import { RouterLink } from '@angular/router';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { AlertController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { AuthService } from 'src/app/shared/services/auth.service';
+
+import { Router } from '@angular/router';
+import { addIcons } from 'ionicons';
+import {
+  barcodeOutline,
+  bookOutline,
+  libraryOutline,
+  searchOutline,
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-home',
@@ -27,6 +40,11 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['home.page.scss'],
   standalone: true,
   imports: [
+    IonTabButton,
+    IonTabBar,
+
+    IonTabs,
+    IonTabs,
     CommonModule,
     IonFabButton,
     IonFab,
@@ -49,7 +67,11 @@ export class HomePage implements OnInit {
   isSupported = false;
   barcodes: Barcode[] = [];
 
-  constructor(private alertController: AlertController) {}
+  private authService = inject(AuthService);
+
+  constructor(private alertController: AlertController, public route: Router) {
+    addIcons({ libraryOutline, bookOutline, barcodeOutline, searchOutline });
+  }
 
   ngOnInit() {
     BarcodeScanner.isSupported().then((result) => {
@@ -79,5 +101,15 @@ export class HomePage implements OnInit {
       buttons: ['OK'],
     });
     await alert.present();
+  }
+
+  async logout() {
+    try {
+      const logout = await this.authService.signOut();
+      console.log('done');
+      this.route.navigate(['/login']);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

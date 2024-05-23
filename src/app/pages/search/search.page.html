@@ -1,0 +1,21 @@
+<ion-content>
+  <div class="header">
+    <h1>Search</h1>
+    <div class="user-profile">
+      <ion-img src="../../assets/userprofile.png"></ion-img>
+    </div>
+  </div>
+
+  <div class="search-bar">
+    <ion-searchbar
+      show-cancel-button="focus"
+      animated="true"
+      placeholder="Enter Product name"
+    ></ion-searchbar>
+    <ion-list>
+      <ion-item *ngFor="let result of results">
+        <ion-label>{{ result }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

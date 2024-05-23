@@ -1,0 +1,29 @@
+ion-content {
+  --padding-start: 2rem;
+  --padding-end: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgb(162, 22, 162);
+  margin: 0;
+}
+.user-profile {
+  width: 35px;
+  height: 35px;
+  background-color: rebeccapurple;
+  border-radius: 50%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}

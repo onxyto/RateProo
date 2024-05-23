@@ -1,5 +1,9 @@
 import { Routes } from '@angular/router';
-import { IddComponent } from 'src/app/idd/idd.component';
+import { IddComponent } from 'src/app/pages/idd/idd.component';
+import { AuthGuard } from '@angular/fire/auth-guard';
+import { HomePage } from './pages/home/home.page';
+import { ScanPage } from './pages/scan/scan.page';
+import { HistoryPage } from './pages/history/history.page';
 
 export const routes: Routes = [
   {
@@ -9,12 +13,37 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+    component: HomePage,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'scan',
+        loadComponent: () =>
+          import('./pages/scan/scan.page').then((m) => m.ScanPage),
+      },
+
+      {
+        path: 'history',
+        loadComponent: () =>
+          import('./pages/history/history.page').then((m) => m.HistoryPage),
+      },
+      {
+        path: 'recs',
+        loadComponent: () =>
+          import('./pages/recs/recs.page').then((m) => m.RecsPage),
+      },
+      {
+        path: 'search',
+        loadComponent: () =>
+          import('./pages/search/search.page').then((m) => m.SearchPage),
+      },
+      //canActivate: [AuthGuard],
+    ],
   },
   {
-    path: 'prdocs-list/:id',
+    path: 'prdocs-list',
     loadComponent: () =>
-      import('./prdocs-list/prdocs-list.component').then(
+      import('./pages/prdocs-list/prdocs-list.component').then(
         (m) => m.PrdocsListComponent
       ),
   },
@@ -24,18 +53,26 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadComponent: () => import('./login/login.page').then((m) => m.LoginPage),
+    loadComponent: () =>
+      import('./pages/login/login.page').then((m) => m.LoginPage),
   },
 
   {
     path: 'landing',
     loadComponent: () =>
-      import('./landing/landing.page').then((m) => m.LandingPage),
+      import('./pages/landing/landing.page').then((m) => m.LandingPage),
   },
-  /**test */
+
   {
     path: 'signup',
     loadComponent: () =>
-      import('./signup/signup.page').then((m) => m.SignupPage),
+      import('./pages/signup/signup.page').then((m) => m.SignupPage),
+  },
+  {
+    path: 'resetpassword',
+    loadComponent: () =>
+      import('./pages/resetpassword/resetpassword.page').then(
+        (m) => m.ResetpasswordPage
+      ),
   },
 ];

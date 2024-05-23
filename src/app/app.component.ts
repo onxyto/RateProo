@@ -7,7 +7,11 @@ import {
   IonToolbar,
   IonSearchbar,
 } from '@ionic/angular/standalone';
-import { BrowserModule } from '@angular/platform-browser';
+
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireModule } from '@angular/fire/compat';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -15,10 +19,13 @@ import { BrowserModule } from '@angular/platform-browser';
   imports: [
     IonSearchbar,
     IonToolbar,
+    AngularFireModule,
+    AngularFireAuthModule,
     IonTitle,
     IonHeader,
     IonApp,
     IonRouterOutlet,
+    ReactiveFormsModule,
   ],
 })
 export class AppComponent {

@@ -17,6 +17,7 @@ ion-content {
 ion-card {
   margin-top: 200px;
 }
+
 .text {
   text-align: center;
   h2 {
@@ -28,5 +29,38 @@ ion-card {
     color: rgb(182, 102, 162);
     font-size: 20px;
     font-weight: 500;
+  }
+}
+
+.requirments {
+  color: red;
+}
+
+.login-button {
+  background-color: violet;
+  color: white;
+  padding: 15px 32px;
+  border-radius: 15px;
+}
+
+.button-container {
+  margin-top: 50px;
+  margin-left: 25px;
+  margin-bottom: 10px;
+}
+
+.pushes {
+  float: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: rgb(20, 145, 45);
+  font-weight: 500;
+
+  .signup-button {
+    background-color: white;
+    color: rgb(182, 102, 162);
+  }
+  .no {
+    margin-left: 60px;
   }
 }
