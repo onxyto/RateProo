@@ -17,6 +17,8 @@ import {
   IonTabs,
   IonTabBar,
   IonTabButton,
+  IonButtons,
+  IonMenuButton,
 } from '@ionic/angular/standalone';
 import { ProductsService } from '../../shared/services/products.service';
 import { RouterLink } from '@angular/router';
@@ -40,6 +42,7 @@ import {
   styleUrls: ['home.page.scss'],
   standalone: true,
   imports: [
+    IonButtons,
     IonTabButton,
     IonTabBar,
 
@@ -61,10 +64,12 @@ import {
     IonTitle,
     IonContent,
     RouterLink,
+    IonMenuButton,
   ],
 })
 export class HomePage implements OnInit {
   isSupported = false;
+
   barcodes: Barcode[] = [];
 
   private authService = inject(AuthService);

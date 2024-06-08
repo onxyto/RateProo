@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +12,18 @@ import {
   IonListHeader,
   IonItem,
   IonButton,
+  IonImg,
+  IonLabel,
+  IonAvatar,
+  IonButtons,
+  IonSegment,
+  IonSegmentButton,
+  IonRouterOutlet,
 } from '@ionic/angular/standalone';
+import { ellipse, personCircle, timeOutline } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
+import { IonMenuButton } from '@ionic/angular/standalone';
+import { IonMenu } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-history',
@@ -19,6 +31,14 @@ import {
   styleUrls: ['./history.page.scss'],
   standalone: true,
   imports: [
+    IonRouterOutlet,
+
+    IonSegmentButton,
+    IonSegment,
+    IonButtons,
+    IonAvatar,
+    IonLabel,
+    IonImg,
     IonButton,
     IonItem,
     IonListHeader,
@@ -30,8 +50,18 @@ import {
     CommonModule,
     FormsModule,
     IonIcon,
+    IonMenuButton,
+    IonImg,
+    IonSegment,
+    IonMenu,
   ],
 })
 export class HistoryPage {
-  constructor() {}
+  selectTabs = 'history';
+
+  constructor() {
+    addIcons({ timeOutline });
+    addIcons({ ellipse });
+    addIcons({ personCircle });
+  }
 }

@@ -45,5 +45,19 @@
     "ExpirationDate": "August 20, 2024",
     "StorageTips": "Refrigerate after opening and use within 7 days",
     "Image": "https://woodsfoodservice.co.uk/media/catalog/product/cache/57f672bc8bb1863d192ed0e81c28e78b/3/a/3ace7ff186351946b63f2083702a839c.jpg"
+  },
+  {
+    "id": 7,
+    "ProductName": "Nawon applejuice",
+    "ExpirationDate": "jully 30,2024",
+    "storageTips": "Keep it refrigerated",
+    "Image": "https://nawon.com.vn/wp-content/uploads/2020/10/Apple-Juice-Drink-is-a-healthy-natural-product-330ml-can-Brand-Nawon.jpg"
+  },
+  {
+    "id": 8,
+    "ProductName": "CeraVe",
+    "ExpirationDate": "jully 30,2026",
+    "storageTips": "Keep it away from direct sunlight ",
+    "Image": "https://i5.walmartimages.com/seo/CeraVe-Daily-Moisturizing-Face-Body-Lotion-with-Hyaluronic-Acid-for-Normal-to-Dry-Skin-12-oz_fa050fd7-4c62-4694-ac27-d28748a393f8_1.5f6dff2fcb1a5ec2f9b1437aea5dbd6f.jpeg"
   }
 ]

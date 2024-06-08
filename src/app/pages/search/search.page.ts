@@ -11,6 +11,7 @@ import {
   IonSearchbar,
   IonItem,
   IonList,
+  IonLabel,
 } from '@ionic/angular/standalone';
 @Component({
   selector: 'app-search',
@@ -18,6 +19,7 @@ import {
   styleUrls: ['./search.page.scss'],
   standalone: true,
   imports: [
+    IonLabel,
     IonList,
     IonItem,
     IonImg,
@@ -34,16 +36,16 @@ import {
 })
 export class SearchPage {
   public data = [
-    'Amsterdam',
-    'Buenos Aires',
-    'Cairo',
-    'Geneva',
-    'Hong Kong',
-    'Istanbul',
-    'London',
-    'Madrid',
-    'New York',
-    'Panama City',
+    'Nestle',
+    'Nivea',
+    'felix',
+    'Maggi',
+    'Vichy',
+    'Nespresso',
+    'Perrier',
+    'Lipton',
+    'Vaseline',
+    'Miko',
   ];
   public results = [...this.data];
   handleInput(event) {

@@ -2,9 +2,6 @@ import { Routes } from '@angular/router';
 import { IddComponent } from 'src/app/pages/idd/idd.component';
 import { AuthGuard } from '@angular/fire/auth-guard';
 import { HomePage } from './pages/home/home.page';
-import { ScanPage } from './pages/scan/scan.page';
-import { HistoryPage } from './pages/history/history.page';
-
 export const routes: Routes = [
   {
     path: '',
@@ -27,6 +24,7 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/history/history.page').then((m) => m.HistoryPage),
       },
+
       {
         path: 'recs',
         loadComponent: () =>
@@ -37,9 +35,11 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/search/search.page').then((m) => m.SearchPage),
       },
+
       //canActivate: [AuthGuard],
     ],
   },
+
   {
     path: 'prdocs-list',
     loadComponent: () =>
@@ -47,6 +47,7 @@ export const routes: Routes = [
         (m) => m.PrdocsListComponent
       ),
   },
+
   {
     path: 'idd/:id',
     component: IddComponent,
@@ -75,4 +76,15 @@ export const routes: Routes = [
         (m) => m.ResetpasswordPage
       ),
   },
+  {
+    path: 'product-detail',
+    loadComponent: () =>
+      import('./pages/product-detail/product-detail.page').then(
+        (m) => m.ProductDetailPage
+      ),
+  },
+  // {
+  //   path: 'infos',
+  //   loadComponent: () => import('./pages/infos/infos.page').then( m => m.InfosPage)
+  // },
 ];

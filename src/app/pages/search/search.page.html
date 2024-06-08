@@ -1,8 +1,10 @@
-<ion-content>
+<ion-content color="light">
   <div class="header">
     <h1>Search</h1>
     <div class="user-profile">
-      <ion-img src="../../assets/userprofile.png"></ion-img>
+      <ion-img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXD3DZbORUc8msoEcO-y5jtvicD2I2vOJP8ec2WqLt6A&s"
+      ></ion-img>
     </div>
   </div>
 
@@ -12,10 +14,10 @@
       animated="true"
       placeholder="Enter Product name"
     ></ion-searchbar>
-    <ion-list>
-      <ion-item *ngFor="let result of results">
-        <ion-label>{{ result }}</ion-label>
-      </ion-item>
-    </ion-list>
   </div>
+  <ion-list [inset]="true">
+    <ion-item *ngFor="let result of results">
+      <ion-label>{{ result }}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

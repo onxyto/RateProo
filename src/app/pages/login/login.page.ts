@@ -96,7 +96,7 @@ export class LoginPage implements OnInit {
         loading.dismiss();
         if (user) {
           loading.dismiss();
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home/history']);
         } else {
           console.log('provide correct value');
         }

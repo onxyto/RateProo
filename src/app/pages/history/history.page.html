@@ -1,9 +1,135 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>history</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false" menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-segment [(ngModel)]="selectTabs">
+      <ion-segment-button value="history">
+        <ion-label>History</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="favorites">
+        <ion-label>Favorites</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-title size="large">history</ion-title>
+<ion-content color="white">
+  <div *ngIf="selectTabs ==='history'">
+    <ion-list>
+      <ion-item color="light" class="product-container" [button]="true">
+        <div class="product-img">
+          <ion-img
+            src=" https://woodsfoodservice.co.uk/media/catalog/product/cache/57f672bc8bb1863d192ed0e81c28e78b/3/a/3ace7ff186351946b63f2083702a839c.jpg"
+          ></ion-img>
+        </div>
+        <div class="product-infos">
+          <h2>Almond Milk</h2>
+          <span class="product-name">CHILLED</span>
+          <span class="timer">
+            <ion-icon name="time-outline"></ion-icon><span>2 weeks ago </span>
+          </span>
+          <span class="rate">
+            <ion-icon name="ellipse" class="c"></ion-icon>
+            <span>excellent</span>
+          </span>
+        </div>
+      </ion-item>
+      <ion-item color="light" class="product-container" [button]="true">
+        <div class="product-img">
+          <ion-img
+            src=" https://nawon.com.vn/wp-content/uploads/2020/10/Apple-Juice-Drink-is-a-healthy-natural-product-330ml-can-Brand-Nawon.jpg"
+          ></ion-img>
+        </div>
+        <div class="product-infos">
+          <h2>NUOC EP TAO Apple</h2>
+          <span class="product-name">nawon</span>
+          <span class="timer">
+            <ion-icon name="time-outline"></ion-icon><span>last week </span>
+          </span>
+          <span class="rate">
+            <ion-icon name="ellipse" class="r"></ion-icon>
+            <span>poor</span>
+          </span>
+        </div>
+      </ion-item>
+      <ion-item color="light" class="product-container" [button]="true">
+        <div class="product-img">
+          <ion-img
+            src="https://i5.walmartimages.com/seo/CeraVe-Daily-Moisturizing-Face-Body-Lotion-with-Hyaluronic-Acid-for-Normal-to-Dry-Skin-12-oz_fa050fd7-4c62-4694-ac27-d28748a393f8_1.5f6dff2fcb1a5ec2f9b1437aea5dbd6f.jpeg"
+          ></ion-img>
+        </div>
+        <div class="product-infos">
+          <h2>Body Lotion</h2>
+          <span class="product-name">CeraVe</span>
+          <span class="timer">
+            <ion-icon name="time-outline"></ion-icon><span>yesterday </span>
+          </span>
+          <span class="rate">
+            <ion-icon name="ellipse" class="c"></ion-icon>
+            <span>excellent</span>
+          </span>
+        </div>
+      </ion-item>
+      <ion-item color="light" class="product-container" [button]="true">
+        <div class="product-img">
+          <ion-img
+            src="https://m.media-amazon.com/images/I/71gxGnJ4siL.jpg"
+          ></ion-img>
+        </div>
+        <div class="product-infos">
+          <h2>Whey Protein</h2>
+          <span class="product-name">Muscle Milk</span>
+          <span class="timer">
+            <ion-icon name="time-outline"></ion-icon><span>last week </span>
+          </span>
+          <span class="rate">
+            <ion-icon name="ellipse" class="o"></ion-icon>
+            <span>excellent</span>
+          </span>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div *ngIf="selectTabs ==='favorites'">
+    <ion-list>
+      <ion-item color="light" class="product-container" [button]="true">
+        <div class="product-img">
+          <ion-img
+            src="https://americanproductbynikita.com/146-thickbox/omega-3-fish-oil-1000-mg-100-softgels.jpg"
+          ></ion-img>
+        </div>
+        <div class="product-infos">
+          <h2>Omega-3 Fish oil capsules</h2>
+          <span class="product-name">Puritan's Pride</span>
+          <span class="timer">
+            <ion-icon name="time-outline"></ion-icon><span>last week </span>
+          </span>
+          <span class="rate">
+            <ion-icon name="ellipse" class="o"></ion-icon>
+            <span>good</span>
+          </span>
+        </div>
+      </ion-item>
+      <ion-item color="light" class="product-container" [button]="true">
+        <div class="product-img">
+          <ion-img
+            src="https://target.scene7.com/is/image/Target/GUEST_c9ac25cc-247c-452d-ada7-11f114f0547e?wid=488&hei=488&fmt=pjpeg"
+          ></ion-img>
+        </div>
+        <div class="product-infos">
+          <h2>Organic gala apples</h2>
+          <span class="product-name">Good & Gather</span>
+          <span class="timer">
+            <ion-icon name="time-outline"></ion-icon><span>today</span>
+          </span>
+          <span class="rate">
+            <ion-icon name="ellipse" class="c"></ion-icon>
+            <span>excellent</span>
+          </span>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>

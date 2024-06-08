@@ -7,7 +7,15 @@ import {
   IonTitle,
   IonToolbar,
   IonIcon,
+  IonImg,
+  IonList,
+  IonInfiniteScroll,
+  IonInfiniteScrollContent,
+  IonItem,
 } from '@ionic/angular/standalone';
+import { InfiniteScrollCustomEvent } from '@ionic/angular';
+import { addIcons } from 'ionicons';
+import { arrowForwardOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-recs',
@@ -15,6 +23,11 @@ import {
   styleUrls: ['./recs.page.scss'],
   standalone: true,
   imports: [
+    IonItem,
+    IonInfiniteScrollContent,
+    IonInfiniteScroll,
+    IonList,
+    IonImg,
     IonContent,
     IonHeader,
     IonTitle,
@@ -22,8 +35,12 @@ import {
     CommonModule,
     FormsModule,
     IonIcon,
+    IonImg,
+    IonList,
   ],
 })
 export class RecsPage {
-  constructor() {}
+  constructor() {
+    addIcons({ arrowForwardOutline });
+  }
 }
