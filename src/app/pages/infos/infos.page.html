@@ -1,13 +1,69 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>infos</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">infos</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card class="profile-content">
+    <div class="image">
+      <ion-avatar>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXD3DZbORUc8msoEcO-y5jtvicD2I2vOJP8ec2WqLt6A&s"
+        />
+      </ion-avatar>
+    </div>
+    <ion-item lines="none" class="profile">
+      <ion-label class="ion-text-center">
+        <ion-text color="">Oussama Khettar</ion-text>
+        <p>
+          <ion-text color="medim">oussamakhettar02gmail.com </ion-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+  <ion-card class="option-container">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col>
+          <ion-label
+            ><ion-avatar color="medi">
+              <ion-icon name="heart-outline"></ion-icon
+            ></ion-avatar>
+          </ion-label>
+          <ion-text>favorites</ion-text>
+        </ion-col>
+
+        <ion-col>
+          <ion-label
+            ><ion-avatar color="medi">
+              <ion-icon name="albums-outline"></ion-icon
+            ></ion-avatar>
+          </ion-label>
+          <ion-text>blacklist</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-label
+            ><ion-avatar color="medi">
+              <ion-icon name="person-outline"></ion-icon
+            ></ion-avatar>
+          </ion-label>
+          <ion-text>Profile</ion-text>
+        </ion-col>
+      </ion-row>
+      <div class="white-bar"></div>
+      <ion-row class="center">
+        <ion-col>
+          <ion-label
+            ><ion-avatar color="medi">
+              <ion-icon name="information-circle-outline"></ion-icon
+            ></ion-avatar>
+          </ion-label>
+          <ion-text>infos</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-label (click)="logout()"
+            ><ion-avatar color="medi">
+              <ion-icon name="log-out-sharp"></ion-icon
+            ></ion-avatar>
+          </ion-label>
+          <ion-text>Logout</ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
 </ion-content>

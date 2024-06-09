@@ -33,6 +33,7 @@ import {
   barcodeOutline,
   bookOutline,
   libraryOutline,
+  personOutline,
   searchOutline,
 } from 'ionicons/icons';
 
@@ -75,7 +76,13 @@ export class HomePage implements OnInit {
   private authService = inject(AuthService);
 
   constructor(private alertController: AlertController, public route: Router) {
-    addIcons({ libraryOutline, bookOutline, barcodeOutline, searchOutline });
+    addIcons({
+      libraryOutline,
+      bookOutline,
+      barcodeOutline,
+      searchOutline,
+      personOutline,
+    });
   }
 
   ngOnInit() {

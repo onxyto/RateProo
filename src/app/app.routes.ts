@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { IddComponent } from 'src/app/pages/idd/idd.component';
 import { AuthGuard } from '@angular/fire/auth-guard';
 import { HomePage } from './pages/home/home.page';
+
 export const routes: Routes = [
   {
     path: '',
@@ -17,6 +18,11 @@ export const routes: Routes = [
         path: 'scan',
         loadComponent: () =>
           import('./pages/scan/scan.page').then((m) => m.ScanPage),
+      },
+      {
+        path: 'infos',
+        loadComponent: () =>
+          import('./pages/infos/infos.page').then((m) => m.InfosPage),
       },
 
       {
@@ -83,8 +89,4 @@ export const routes: Routes = [
         (m) => m.ProductDetailPage
       ),
   },
-  // {
-  //   path: 'infos',
-  //   loadComponent: () => import('./pages/infos/infos.page').then( m => m.InfosPage)
-  // },
 ];
