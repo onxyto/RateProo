@@ -9,4 +9,5 @@ export const environment = {
     appId: '1:75021477171:web:2111cd16b3cc101ff3ca46',
     measurementId: 'G-LSREFBTD1N',
   },
+  api: 'http://localhost:3000',
 };

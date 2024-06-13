@@ -17,7 +17,7 @@ import {
   IonIcon,
   IonList,
 } from '@ionic/angular/standalone';
-
+import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -42,6 +42,7 @@ import {
   styleUrls: ['app.component.scss'],
   standalone: true,
   imports: [
+    FormsModule,
     IonList,
     IonIcon,
     IonText,

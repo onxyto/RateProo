@@ -83,10 +83,30 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'product-detail',
+    path: 'product-detail/:id',
     loadComponent: () =>
       import('./pages/product-detail/product-detail.page').then(
         (m) => m.ProductDetailPage
       ),
+  },
+  {
+    path: 'blacklist',
+    loadComponent: () =>
+      import('./pages/blacklist/blacklist.page').then((m) => m.BlacklistPage),
+  },
+  {
+    path: 'overview',
+    loadComponent: () =>
+      import('./pages/overview/overview.page').then((m) => m.OverviewPage),
+  },
+  {
+    path: 'favorites',
+    loadComponent: () =>
+      import('./pages/favorites/favorites.page').then((m) => m.FavoritesPage),
+  },
+  {
+    path: 'use-info',
+    loadComponent: () =>
+      import('./pages/use-info/use-info.page').then((m) => m.UseInfoPage),
   },
 ];

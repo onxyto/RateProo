@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home/infos"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<div class="title">
+  <h1>Blacklist</h1>
+</div>
+<ion-content color="white">
+  <div class="ion-pad">
+    <ion-list>
+      <ion-item-sliding *ngFor="let product of blacklistProducts">
+        <ion-item color="light" class="product-container" [button]="true">
+          <div class="product-img">
+            <ion-img [src]="product.img"></ion-img>
+          </div>
+          <div class="product-infos">
+            <h2>{{ product.title }}</h2>
+            <span class="product-name">{{ product.name }}</span>
+            <span class="timer">
+              <ion-icon name="time-outline"></ion-icon
+              ><span>{{ product.time }}</span>
+            </span>
+            <span class="rate">
+              <ion-icon name="ellipse" [class]="product.ratingClass"></ion-icon>
+              <span>{{ product.rating }}</span>
+            </span>
+          </div>
+        </ion-item>
+        <ion-item-options slot="end">
+          <ion-item-option color="danger">
+            <ion-icon
+              slot="icon-only"
+              name="trash"
+              (click)="onEdit()"
+            ></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+</ion-content>

@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/history"></ion-back-button>
+    </ion-buttons>
+    <ion-title>History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Positives</ion-card-title>
+      <ion-card-subtitle>per 100 g</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <div class="c">
+          <ion-item>
+            <ion-icon slot="start" name="hand-right-outline"></ion-icon>
+            <ion-label>No additives</ion-label>
+            <ion-icon
+              slot="end"
+              color="success"
+              name="checkmark-outline"
+            ></ion-icon>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="fish-outline"></ion-icon>
+            <ion-label>Protein</ion-label>
+            <ion-badge slot="end">33g</ion-badge>
+            <ion-icon slot="end" color="success" name="ellipse"></ion-icon>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="water-outline"></ion-icon>
+            <ion-label>Saturated fat</ion-label>
+            <ion-badge slot="end">0.7g</ion-badge>
+            <ion-icon slot="end" color="success" name="ellipse"></ion-icon>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="cube-outline"></ion-icon>
+            <ion-label>Sugar</ion-label>
+            <ion-badge slot="end">0.97g</ion-badge>
+            <ion-icon slot="end" color="success" name="ellipse"></ion-icon>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="flame-outline"></ion-icon>
+            <ion-label>Calories</ion-label>
+            <ion-badge slot="end">175 Cal</ion-badge>
+            <ion-icon slot="end" color="success" name="ellipse"></ion-icon>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="restaurant-outline"></ion-icon>
+            <ion-label>Salt</ion-label>
+            <ion-badge slot="end">0.5g</ion-badge>
+            <ion-icon slot="end" color="success" name="ellipse"></ion-icon>
+          </ion-item>
+        </div>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Options</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-checkbox justify="space-between">Add to favorites</ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Food preferences</ion-label>
+          <ion-icon slot="end" name="list-outline"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-label>Delete from history</ion-label>
+          <ion-icon slot="end" name="trash-outline"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,7 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
+import { Router, RouterLink } from '@angular/router';
 import {
   IonContent,
   IonHeader,
@@ -26,6 +27,7 @@ import {
   heartOutline,
   logOutSharp,
   logoIonic,
+  pieChartOutline,
   personOutline,
 } from 'ionicons/icons';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -55,15 +57,17 @@ import { AuthService } from 'src/app/shared/services/auth.service';
     IonToolbar,
     CommonModule,
     FormsModule,
+    RouterLink,
   ],
 })
 export class InfosPage {
   private authService = inject(AuthService);
 
-  constructor(public route: Router) {
+  constructor(public route: Router, private navctrl: NavController) {
     addIcons({ logoIonic });
     addIcons({ personOutline });
     addIcons({ heartOutline });
+    addIcons({ pieChartOutline });
   }
   async logout() {
     try {
@@ -73,5 +77,11 @@ export class InfosPage {
     } catch (error) {
       console.log(error);
     }
+  }
+  navigateToBlacklist() {
+    this.navctrl.navigateForward('/blacklist', {
+      animated: true,
+      animationDirection: 'forward',
+    });
   }
 }

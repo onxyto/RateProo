@@ -1,18 +1,27 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Product } from '../models/product';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  products: any;
-  constructor(private http: HttpClient) {}
+  private httpClient = inject(HttpClient);
 
-  getProducts() {
-    return this.http.get('../../assets/mocks/products.json');
+  private readonly productsUrl = '/products';
+
+  public getProducts(mock = false): Observable<Product[]> {
+    if (mock) {
+      return this.httpClient.get<Product[]>('../../assets/mocks/products.json');
+    }
+    return this.httpClient.get<Product[]>(
+      `${environment.api}${this.productsUrl}`
+    );
   }
 
   public getProductBy(id: number) {
-    return this.http.get('../../assets/mocks/products.json').pipe();
+    return this.httpClient.get('../../assets/mocks/products.json').pipe();
   }
 }

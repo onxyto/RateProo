@@ -20,7 +20,7 @@
     <ion-grid [fixed]="true">
       <ion-row>
         <ion-col>
-          <ion-label
+          <ion-label [routerLink]="['/favorites']"
             ><ion-avatar color="medi">
               <ion-icon name="heart-outline"></ion-icon
             ></ion-avatar>
@@ -29,7 +29,7 @@
         </ion-col>
 
         <ion-col>
-          <ion-label
+          <ion-label (click)="navigateToBlacklist()"
             ><ion-avatar color="medi">
               <ion-icon name="albums-outline"></ion-icon
             ></ion-avatar>
@@ -37,12 +37,12 @@
           <ion-text>blacklist</ion-text>
         </ion-col>
         <ion-col>
-          <ion-label
+          <ion-label [routerLink]="['/overview']"
             ><ion-avatar color="medi">
-              <ion-icon name="person-outline"></ion-icon
-            ></ion-avatar>
+              <ion-icon name="pie-chart-outline"></ion-icon>
+            </ion-avatar>
           </ion-label>
-          <ion-text>Profile</ion-text>
+          <ion-text>Overview</ion-text>
         </ion-col>
       </ion-row>
       <div class="white-bar"></div>
