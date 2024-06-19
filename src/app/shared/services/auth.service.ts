@@ -1,18 +1,31 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private auth = inject(Auth);
+  private httpClient = inject(HttpClient);
 
-  async registerUser(email: string, password: string) {
-    return await createUserWithEmailAndPassword(this.auth, email, password);
+  registerUser(
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string
+  ): Observable<any> {
+    const user = { firstName, lastName, email, password };
+    return this.httpClient.post(`${environment.api}/user/signup`, {
+      ...user,
+      role: 'USER',
+    });
   }
 
   async loginUser(email: string, password: string) {

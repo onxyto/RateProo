@@ -1,6 +1,6 @@
 import { AuthService } from '../../shared/services/auth.service';
 import { lockClosedOutline, personOutline } from 'ionicons/icons';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -19,6 +19,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { Router, RouterLink } from '@angular/router';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -42,13 +43,15 @@ import { Router, RouterLink } from '@angular/router';
     RouterLink,
   ],
 })
-export class SignupPage implements OnInit {
+export class SignupPage implements OnInit, OnDestroy {
   regForm: FormGroup;
+
+  private unsubscribe$ = new Subject<void>();
 
   constructor(
     public formBuilder: FormBuilder,
     public loadingCtrl: LoadingController,
-    public AuthService: AuthService,
+    public authService: AuthService,
     public router: Router
   ) {
     addIcons({ personOutline });
@@ -56,7 +59,8 @@ export class SignupPage implements OnInit {
   }
   ngOnInit() {
     this.regForm = this.formBuilder.group({
-      fullname: ['', [Validators.required]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
       email: [
         '',
         [
@@ -79,19 +83,30 @@ export class SignupPage implements OnInit {
   }
 
   async signup() {
-    const { email, password } = this.regForm.value;
+    const { email, password, firstName, lastName } = this.regForm.value;
     const loading = await this.loadingCtrl.create();
 
     loading.present();
     if (this.regForm?.valid) {
-      const user = await this.AuthService.registerUser(email, password);
-      loading.dismiss();
-      if (user) {
-        loading.dismiss();
-        this.router.navigate(['/login']);
-      } else {
-        console.log('provide correct value');
-      }
+      this.authService
+        .registerUser(firstName, lastName, email, password)
+        .pipe(
+          tap((user) => {
+            if (user) {
+              loading.dismiss();
+              this.router.navigate(['/login']);
+            } else {
+              console.log('provide correct value');
+            }
+          }),
+          takeUntil(this.unsubscribe$)
+        )
+        .subscribe();
     }
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

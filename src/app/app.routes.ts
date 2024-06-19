@@ -39,7 +39,7 @@ export const routes: Routes = [
       {
         path: 'search',
         loadComponent: () =>
-          import('./pages/search/search.page').then((m) => m.SearchPage),
+          import('./pages/product-search/product-search.page').then((m) => m.ProductSearchPage),
       },
 
       //canActivate: [AuthGuard],

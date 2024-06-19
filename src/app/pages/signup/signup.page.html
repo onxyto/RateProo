@@ -5,12 +5,13 @@
         <h2>Welcome to <span class="text-warning">RatePro</span></h2>
         <p>Create Your Account and Get Started!</p>
       </div>
-      <from [formGroup]="regForm">
+      <form [formGroup]="regForm">
+        <!-- firstName-->
         <div class="ion-padding">
           <ion-item>
             <ion-input
-              formControlName="fullname"
-              placeholder="name"
+              formControlName="firstName"
+              placeholder="firstName"
               class="input"
             >
             </ion-input>
@@ -22,10 +23,32 @@
           </ion-item>
           <div
             class="requirments"
-            *ngIf="this.regForm.controls?.['fullname'].touched && this.regForm.controls?.['fullname'].invalid"
+            *ngIf="this.regForm.controls?.['firstName'].touched && this.regForm.controls?.['firstName'].invalid"
           >
-            <ion-text> FullName is required </ion-text>
+            <ion-text> Firstname is required </ion-text>
           </div>
+
+          <!-- lastname -->
+          <ion-item>
+            <ion-input
+              formControlName="lastName"
+              placeholder="lastName"
+              class="input"
+            >
+            </ion-input>
+            <ion-icon
+              name="person-outline"
+              slot="end"
+              color="rebeccapurple"
+            ></ion-icon>
+          </ion-item>
+          <div
+            class="requirments"
+            *ngIf="this.regForm.controls?.['lastName'].touched && this.regForm.controls?.['lastName'].invalid"
+          >
+            <ion-text> Lastname is required </ion-text>
+          </div>
+
           <ion-item>
             <ion-input
               formControlName="email"
@@ -83,7 +106,7 @@
             Register
           </button>
         </div>
-      </from>
+      </form>
       <div class="text2">
         Finish setting up your account now and let's get started!
       </div>
