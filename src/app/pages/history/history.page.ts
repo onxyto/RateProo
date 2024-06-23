@@ -24,15 +24,17 @@ import { ellipse, personCircle, timeOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { IonMenuButton } from '@ionic/angular/standalone';
 import { IonMenu } from '@ionic/angular/standalone';
-import { HttpClient } from '@angular/common/http';
 
 import { FoodsService } from 'src/app/shared/services/foods.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 @Component({
   selector: 'app-history',
   template: `
     <ion-content color="white">
+      <button (click)="logout()">Logout</button>
+      {{ foodsFood$ | async | json }}
       <ion-list>
-        <ion-item
+        <!-- <ion-item
           (click)="getFoodBy(food.id)"
           *ngFor="let food of foodsFood$ | async"
           color="light"
@@ -54,7 +56,7 @@ import { FoodsService } from 'src/app/shared/services/foods.service';
               <span>{{ food.rating }}</span>
             </span>
           </div>
-        </ion-item>
+        </ion-item> -->
       </ion-list>
     </ion-content>
   `,
@@ -86,6 +88,9 @@ import { FoodsService } from 'src/app/shared/services/foods.service';
   ],
 })
 export class HistoryPage {
+  private foodsService = inject(FoodsService);
+  private authService = inject(AuthService);
+  private router = inject(Router);
   // public selectTabs = 'history';
   searchTerm: string = '';
 
@@ -94,12 +99,15 @@ export class HistoryPage {
     addIcons({ ellipse });
     addIcons({ personCircle });
   }
-  private foodsService = inject(FoodsService);
 
-  private router = inject(Router);
   public foodsFood$ = this.foodsService.getFoods();
   public getFoodBy(id: number) {
     this.router.navigate(['/product-detail', id]);
+  }
+
+  async logout() {
+    await this.authService.signOut();
+    console.log('log out success full');
   }
 }
 

@@ -24,6 +24,7 @@ import { LoadingController } from '@ionic/angular';
 import { logoIonic, personOutline, lockClosedOutline } from 'ionicons/icons';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
+import { UserCredential } from 'firebase/auth';
 
 @Component({
   selector: 'app-login',
@@ -92,9 +93,11 @@ export class LoginPage implements OnInit {
     await loading.present();
     if (this.LogForm?.valid) {
       try {
-        const user = await this.authService.loginUser(email, password);
+        const auth = await this.authService.loginUser(email, password);
         loading.dismiss();
-        if (user) {
+        if (auth) {
+          const _auth = auth as any;
+          localStorage.setItem('firebase_id_token', _auth?.user?.accessToken);
           loading.dismiss();
           this.router.navigate(['/home/history']);
         } else {

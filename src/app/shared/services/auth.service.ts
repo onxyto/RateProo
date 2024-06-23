@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth } from '@angular/fire/auth';
 import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
@@ -31,6 +31,23 @@ export class AuthService {
   async loginUser(email: string, password: string) {
     return await signInWithEmailAndPassword(this.auth, email, password);
   }
+
+  /* refreshToken(): Observable<any> {
+    const refreshToken = localStorage.getItem('firebase_refresh_token'); // Replace with your storage mechanism
+
+    if (!refreshToken) {
+      throw new Error('No refresh token available'); // Handle case where no refresh token exists
+    }
+
+    const auth = getAuth(); // Get the Firebase Auth instance
+
+    return from(signInWithRefreshToken(auth, refreshToken)).pipe(
+      switchMap((userCredential) => {
+        const newIdToken = userCredential.user?.refreshToken; // Update stored refresh token (optional)
+        return of({ newIdToken }); // Return the new ID token or relevant data
+      })
+    );
+  } */
 
   async resetPassword(email: string) {
     return await sendPasswordResetEmail(this.auth, email);

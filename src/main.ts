@@ -1,5 +1,9 @@
-import { provideHttpClient } from '@angular/common/http';
-import { enableProdMode, importProvidersFrom } from '@angular/core';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
+import { enableProdMode } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { RouteReuseStrategy, provideRouter } from '@angular/router';
 import {
@@ -14,6 +18,7 @@ import { provideFirebaseApp } from '@angular/fire/app';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { environment } from './environments/environment';
+import { AuthInterceptor } from './app/shared/interceptors/auth.interceptor';
 if (environment.production) {
   enableProdMode();
 }
@@ -23,7 +28,12 @@ bootstrapApplication(AppComponent, {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(withInterceptorsFromDi()),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
     provideFirebaseApp(() => initializeApp({ ...environment.firebaseConfig })),
     provideAuth(() => getAuth()),
   ],

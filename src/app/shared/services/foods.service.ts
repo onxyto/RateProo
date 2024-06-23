@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class FoodsService {
   private httpClient = inject(HttpClient);
 
-  private readonly foodsUrl = '/foods';
+  private readonly foodsUrl = '/products';
 
   public getFoods(mock = false): Observable<Food[]> {
     if (mock) {
