@@ -9,6 +9,13 @@ export const routes: Routes = [
     redirectTo: 'landing',
     pathMatch: 'full',
   },
+
+  {
+    path: 'history',
+    canActivate: [AuthGuard],
+    loadComponent: () =>
+      import('./pages/history/history.page').then((m) => m.HistoryPage),
+  },
   {
     path: 'home',
     component: HomePage,
@@ -23,12 +30,6 @@ export const routes: Routes = [
         path: 'infos',
         loadComponent: () =>
           import('./pages/infos/infos.page').then((m) => m.InfosPage),
-      },
-
-      {
-        path: 'history',
-        loadComponent: () =>
-          import('./pages/history/history.page').then((m) => m.HistoryPage),
       },
 
       {

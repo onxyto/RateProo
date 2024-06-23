@@ -99,7 +99,8 @@ export class LoginPage implements OnInit {
           const _auth = auth as any;
           localStorage.setItem('firebase_id_token', _auth?.user?.accessToken);
           loading.dismiss();
-          this.router.navigate(['/home/history']);
+          // TODO: NAVIGATION SELON LE ROLE
+          this.router.navigate(['/history']);
         } else {
           console.log('provide correct value');
         }

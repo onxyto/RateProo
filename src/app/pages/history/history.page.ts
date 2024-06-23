@@ -27,14 +27,39 @@ import { IonMenu } from '@ionic/angular/standalone';
 
 import { FoodsService } from 'src/app/shared/services/foods.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { getRatingClass } from 'src/app/shared/utils';
+
+const componentImports = [
+  IonRouterOutlet,
+  IonSegmentButton,
+  IonSegment,
+  IonButtons,
+  IonAvatar,
+  IonLabel,
+  IonImg,
+  IonButton,
+  IonItem,
+  IonListHeader,
+  IonList,
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  CommonModule,
+  FormsModule,
+  IonIcon,
+  IonMenuButton,
+  IonImg,
+  IonSegment,
+  IonMenu,
+];
 @Component({
   selector: 'app-history',
   template: `
     <ion-content color="white">
-      <button (click)="logout()">Logout</button>
-      {{ foodsFood$ | async | json }}
+      <h1>History</h1>
       <ion-list>
-        <!-- <ion-item
+        <ion-item
           (click)="getFoodBy(food.id)"
           *ngFor="let food of foodsFood$ | async"
           color="light"
@@ -42,54 +67,31 @@ import { AuthService } from 'src/app/shared/services/auth.service';
           [button]="true"
         >
           <div class="product-img">
-            <ion-img [src]="food.img"></ion-img>
+            <ion-img [src]="food.image_url"></ion-img>
           </div>
           <div class="product-infos">
-            <h2>{{ food.title }}</h2>
+            <h3>{{ food.title }}</h3>
             <span class="product-name">{{ food.name }}</span>
             <span class="timer">
               <ion-icon name="time-outline"></ion-icon
-              ><span>{{ food.time }}</span>
+              ><span>{{ food.created_at | date : 'dd/MM/yyyy' }}</span>
             </span>
-            <span class="rate">
-              <ion-icon name="ellipse" [class]="food.ratingClass"></ion-icon>
+            <span [class]="_getRatingClass(food.rating)">
+              <ion-icon name="ellipse" class="c"></ion-icon>
               <span>{{ food.rating }}</span>
             </span>
           </div>
-        </ion-item> -->
+        </ion-item>
       </ion-list>
     </ion-content>
   `,
   styleUrls: ['./history.page.scss'],
   standalone: true,
-  imports: [
-    IonRouterOutlet,
-    IonSegmentButton,
-    IonSegment,
-    IonButtons,
-    IonAvatar,
-    IonLabel,
-    IonImg,
-    IonButton,
-    IonItem,
-    IonListHeader,
-    IonList,
-    IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
-    CommonModule,
-    FormsModule,
-    IonIcon,
-    IonMenuButton,
-    IonImg,
-    IonSegment,
-    IonMenu,
-  ],
+  imports: [...componentImports],
 })
 export class HistoryPage {
   private foodsService = inject(FoodsService);
-  private authService = inject(AuthService);
+
   private router = inject(Router);
   // public selectTabs = 'history';
   searchTerm: string = '';
@@ -101,84 +103,15 @@ export class HistoryPage {
   }
 
   public foodsFood$ = this.foodsService.getFoods();
+
   public getFoodBy(id: number) {
     this.router.navigate(['/product-detail', id]);
   }
 
-  async logout() {
-    await this.authService.signOut();
-    console.log('log out success full');
+  public _getRatingClass(rating: number) {
+    return getRatingClass(rating);
   }
 }
-
-/**
- *  historyProducts = [
-    {
-      img: 'https://woodsfoodservice.co.uk/media/catalog/product/cache/57f672bc8bb1863d192ed0e81c28e78b/3/a/3ace7ff186351946b63f2083702a839c.jpg',
-      title: 'Almond Milk',
-      name: 'CHILLED',
-      time: '2 weeks ago',
-      rating: 'excellent',
-      ratingClass: 'c',
-    },
-    {
-      img: 'https://nawon.com.vn/wp-content/uploads/2020/10/Apple-Juice-Drink-is-a-healthy-natural-product-330ml-can-Brand-Nawon.jpg',
-      title: 'NUOC EP TAO Apple',
-      name: 'nawon',
-      time: 'last week',
-      rating: 'poor',
-      ratingClass: 'r',
-    },
-    {
-      img: 'https://i5.walmartimages.com/seo/CeraVe-Daily-Moisturizing-Face-Body-Lotion-with-Hyaluronic-Acid-for-Normal-to-Dry-Skin-12-oz_fa050fd7-4c62-4694-ac27-d28748a393f8_1.5f6dff2fcb1a5ec2f9b1437aea5dbd6f.jpeg',
-      title: 'Body Lotion',
-      name: 'CeraVe',
-      time: 'yesterday',
-      rating: 'excellent',
-      ratingClass: 'c',
-    },
-    {
-      img: 'https://m.media-amazon.com/images/I/71gxGnJ4siL.jpg',
-      title: 'Whey Protein',
-      name: 'Muscle Milk',
-      time: 'last week',
-      rating: 'excellent',
-      ratingClass: 'o',
-    },
-  ];
-
-  // favoritesProducts = [
-  //   {
-  //     img: 'https://americanproductbynikita.com/146-thickbox/omega-3-fish-oil-1000-mg-100-softgels.jpg',
-  //     title: 'Omega-3 Fish oil capsules',
-  //     name: "Puritan's Pride",
-  //     time: 'last week',
-  //     rating: 'good',
-  //     ratingClass: 'o',
-  //   },
-  //   {
-  //     img: 'https://target.scene7.com/is/image/Target/GUEST_c9ac25cc-247c-452d-ada7-11f114f0547e?wid=488&hei=488&fmt=pjpeg',
-  //     title: 'Organic gala apples',
-  //     name: 'Good & Gather',
-  //     time: 'today',
-  //     rating: 'excellent',
-  //     ratingClass: '<c>',
-  //   },
-  // ];
- */
-//   <!-- <ion-header>
-//   <ion-toolbar>
-//     <ion-segment [(ngModel)]="selectTabs">
-//       <ion-segment-button value="history">
-//         <ion-label>History</ion-label>
-//       </ion-segment-button>
-
-//       <ion-segment-button value="favorites">
-//         <ion-label>Favorites</ion-label>
-//       </ion-segment-button>
-//     </ion-segment>
-//   </ion-toolbar>
-// </ion-header> -->
 
 // <!-- <div *ngIf="selectTabs === 'favorites'">
 // <ion-list>

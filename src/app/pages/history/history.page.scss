@@ -1,34 +1,7 @@
-.header {
-  padding-left: 10px;
-  padding-right: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  margin-top: 30px;
-}
-
 h1 {
-  font-size: 2rem;
-  font-weight: 600;
+  font-weight: 700;
   color: rgb(162, 22, 162);
-  margin: 0;
-}
-.user-profile {
-  width: 45px;
-  height: 45px;
-  background-color: rebeccapurple;
-  border-radius: 50%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.product-name {
-  margin-top: 7px;
-  font-weight: 400;
-  color: gray;
+  padding: 5px;
 }
 
 ion-item {
@@ -36,38 +9,48 @@ ion-item {
   flex-direction: row;
 
   .product-img {
-    width: 150px;
+    max-width: 400px;
   }
 
   .product-infos {
     display: flex;
     flex-direction: column;
     gap: 10px;
-  }
-}
 
-.timer {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
+    h2 {
+      font-size: 1em;
+    }
 
-  font-weight: 400;
-  color: gray;
-}
+    .timer {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
 
-.rate {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  font-weight: 400;
-  color: gray;
-  .r {
-    color: red;
-  }
-  .o {
-    color: orange;
-  }
-  .c {
-    color: green;
+      font-weight: 400;
+      color: gray;
+    }
+
+    .product-name {
+      margin-top: 7px;
+      font-weight: 400;
+      color: gray;
+    }
+
+    .rate {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      font-weight: 400;
+      color: gray;
+      .r {
+        color: red;
+      }
+      .o {
+        color: orange;
+      }
+      .c {
+        color: green;
+      }
+    }
   }
 }
