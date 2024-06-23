@@ -13,7 +13,7 @@ import {
   IonLabel,
 } from '@ionic/angular/standalone';
 import { IonIcon } from '@ionic/angular/standalone';
-import { QRCodeModule } from 'angularx-qrcode';
+// import { QRCodeModule } from 'angularx-qrcode';
 import { AlertController } from '@ionic/angular';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 @Component({
@@ -34,7 +34,7 @@ import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
     CommonModule,
     FormsModule,
     IonIcon,
-    QRCodeModule,
+    // QRCodeModule,
   ],
 })
 export class ScanPage {

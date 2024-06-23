@@ -39,7 +39,9 @@ export const routes: Routes = [
       {
         path: 'search',
         loadComponent: () =>
-          import('./pages/product-search/product-search.page').then((m) => m.ProductSearchPage),
+          import('./pages/product-search/product-search.page').then(
+            (m) => m.ProductSearchPage
+          ),
       },
 
       //canActivate: [AuthGuard],
@@ -108,5 +110,12 @@ export const routes: Routes = [
     path: 'use-info',
     loadComponent: () =>
       import('./pages/use-info/use-info.page').then((m) => m.UseInfoPage),
+  },
+  {
+    path: 'add-products',
+    loadComponent: () =>
+      import('./pages/add-products/add-products.page').then(
+        (m) => m.AddProductsPage
+      ),
   },
 ];

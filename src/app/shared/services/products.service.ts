@@ -24,4 +24,10 @@ export class ProductsService {
   public getProductBy(id: number) {
     return this.httpClient.get('../../assets/mocks/products.json').pipe();
   }
+  public createProduct(product: Product): Observable<Product> {
+    return this.httpClient.post<Product>(
+      `${environment.api}${this.productsUrl}`,
+      product
+    );
+  }
 }

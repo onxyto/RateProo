@@ -13,23 +13,13 @@ import {
   IonList,
   IonLabel,
 } from '@ionic/angular/standalone';
+import { Product } from 'src/app/shared/models/product';
+
+import { ProductsService } from 'src/app/shared/services/products.service';
 @Component({
   selector: 'app-search',
-  template: `
-    <ion-content color="light">
-      <div class="header">
-        <h1>Search</h1>
-      </div>
-      <div>
-        <ion-searchbar [debounce]="3000" (ionInput)="handleInput($event)">
-        </ion-searchbar>
-      </div>
-    </ion-content>
-  `,
-  styles: [
-    `
-    `,
-  ],
+  template: ``,
+  styles: [``],
   standalone: true,
   imports: [
     IonLabel,
@@ -47,9 +37,7 @@ import {
   ],
 })
 export class ProductSearchPage {
-
-  handleInput(event) {
-    const query = event.target.value.toLowerCase();
-      console.log('query', query)
-  }
+  searchTerm: string = '';
+  searchResults: Product[] = [];
+  constructor(private productsService: ProductsService) {}
 }

@@ -1,0 +1,181 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Product Form</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="productForm">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title> Initial Product Info </ion-card-title>
+      </ion-card-header>
+
+      <ion-item>
+        <ion-input
+          formControlName="ean"
+          label="EAN"
+          labelPlacement="floating"
+          type="text"
+        >
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          formControlName="name"
+          label="Name"
+          labelPlacement="floating"
+          type="text"
+        >
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          formControlName="title"
+          label="Title"
+          labelPlacement="floating"
+          type="text"
+        >
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          formControlName="imageurl"
+          label="ImageUrl"
+          labelPlacement="floating"
+          type="text"
+        >
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          formControlName="rating"
+          label="rating"
+          labelPlacement="floating"
+          type="text"
+        >
+        </ion-input>
+      </ion-item>
+      <br />
+      <ion-label>Product-Type</ion-label>
+      <ion-item>
+        <ion-radio-group formControlName="type">
+          <ion-radio value="FOOD">Food</ion-radio>
+          <ion-radio value="DRINK">Drink</ion-radio>
+          <ion-radio value="COSMETIC">Cosmetic</ion-radio>
+        </ion-radio-group>
+      </ion-item>
+      <ion-item>
+        <ion-textarea
+          formControlName="description"
+          label="Description :"
+          labelPlacement="floating"
+          type="text"
+        ></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-textarea
+          formControlName="storagetype"
+          label="Storage-type :"
+          labelPlacement="floating"
+          type="text"
+        ></ion-textarea>
+      </ion-item>
+    </ion-card>
+
+    <ion-card-content
+      *ngIf="productForm.get('type').value === 'FOOD'  || productForm.get('type').value === 'DRINK'"
+    >
+      <ion-card-title>Nutrition Details</ion-card-title>
+      <div formArrayName="nutritions">
+        <div
+          *ngFor="let nutrition of nutritions.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <ion-item>
+            <ion-input
+              formControlName="name"
+              label="name"
+              labelPlacement="floating"
+              type="text"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              formControlName="quantity"
+              label="quantity"
+              labelPlacement="floating"
+              type="text"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              formControlName="symbol"
+              label="symbol"
+              labelPlacement="floating"
+              type="text"
+            ></ion-input>
+          </ion-item>
+          <ion-button (click)="removeNutrition(i)">Remove</ion-button>
+        </div>
+      </div>
+      <ion-button (click)="addNutrition()">Add Nutrition</ion-button>
+    </ion-card-content>
+
+    <ion-card-content *ngIf="productForm.get('type').value === 'COSMETIC'">
+      <ion-card-title>Ingredients Details</ion-card-title>
+      <div formArrayName="ingredients">
+        <div
+          *ngFor="let ingredient of ingredients.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <ion-item>
+            <ion-input
+              formControlName="name"
+              label="Name"
+              labelPlacement="floating"
+              type="text"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              formControlName="riskrate"
+              label="Risk-Rate"
+              labelPlacement="floating"
+              type="text"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              formControlName="healthrisk"
+              label="Healthrisk"
+              labelPlacement="floating"
+              type="text"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-textarea
+              formControlName="scientificsources"
+              label="Scientific-Sources :"
+              labelPlacement="floating"
+              type="text"
+            ></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-textarea
+              formControlName="description"
+              label="Description"
+              labelPlacement="floating"
+              type="text"
+            ></ion-textarea>
+          </ion-item>
+          <ion-button (click)="removeIngredient(i)">Remove</ion-button>
+        </div>
+      </div>
+      <ion-button (click)="addIngredient()">Add Nutrition</ion-button>
+    </ion-card-content>
+
+    <ion-button type="submit" expand="block" [disabled]="!productForm.valid">
+      Add Product
+    </ion-button>
+  </form>
+</ion-content>
