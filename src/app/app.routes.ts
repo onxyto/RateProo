@@ -1,26 +1,61 @@
 import { Routes } from '@angular/router';
 import { IddComponent } from 'src/app/pages/idd/idd.component';
-import { AuthGuard } from '@angular/fire/auth-guard';
+import { AuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { HomePage } from './pages/home/home.page';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/auth']);
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'landing',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
-
   {
-    path: 'history',
-    canActivate: [AuthGuard],
+    path: 'auth',
     loadComponent: () =>
-      import('./pages/history/history.page').then((m) => m.HistoryPage),
+      import('./auth/pages/auth/auth.page').then((m) => m.AuthPage),
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./auth/pages/login/login.page').then((m) => m.LoginPage),
+  },
+  {
+    path: 'signup',
+    loadComponent: () =>
+      import('./auth/pages/signup/signup.page').then((m) => m.SignupPage),
   },
   {
     path: 'home',
     component: HomePage,
     canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
     children: [
+      {
+        path: '',
+        redirectTo: 'history',
+        pathMatch: 'full',
+      },
+      {
+        path: 'products-list',
+        loadComponent: () =>
+          import('./products/pages/product-list/product-list.page').then(
+            (m) => m.ProductListPage
+          ),
+      },
+      {
+        path: 'product-details/:id',
+        loadComponent: () =>
+          import('./products/pages/product-details/product-details.page').then(
+            (m) => m.ProductDetailsPage
+          ),
+      },
+      {
+        path: 'history',
+        loadComponent: () =>
+          import('./history/pages/history-list/history-list.page').then((m) => m.HistoryListPage),
+      },
       {
         path: 'scan',
         loadComponent: () =>
@@ -31,40 +66,12 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/infos/infos.page').then((m) => m.InfosPage),
       },
-
-      {
-        path: 'recs',
-        loadComponent: () =>
-          import('./pages/recs/recs.page').then((m) => m.RecsPage),
-      },
-      {
-        path: 'search',
-        loadComponent: () =>
-          import('./pages/product-search/product-search.page').then(
-            (m) => m.ProductSearchPage
-          ),
-      },
-
       //canActivate: [AuthGuard],
     ],
   },
-
-  {
-    path: 'prdocs-list',
-    loadComponent: () =>
-      import('./pages/prdocs-list/prdocs-list.component').then(
-        (m) => m.PrdocsListComponent
-      ),
-  },
-
   {
     path: 'idd/:id',
     component: IddComponent,
-  },
-  {
-    path: 'login',
-    loadComponent: () =>
-      import('./pages/login/login.page').then((m) => m.LoginPage),
   },
 
   {
@@ -74,22 +81,10 @@ export const routes: Routes = [
   },
 
   {
-    path: 'signup',
-    loadComponent: () =>
-      import('./pages/signup/signup.page').then((m) => m.SignupPage),
-  },
-  {
     path: 'resetpassword',
     loadComponent: () =>
       import('./pages/resetpassword/resetpassword.page').then(
         (m) => m.ResetpasswordPage
-      ),
-  },
-  {
-    path: 'product-detail/:id',
-    loadComponent: () =>
-      import('./pages/product-detail/product-detail.page').then(
-        (m) => m.ProductDetailPage
       ),
   },
   {

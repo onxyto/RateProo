@@ -7,6 +7,8 @@ import {
 } from 'firebase/auth';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import firebase from "firebase/compat";
+import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +30,7 @@ export class AuthService {
     });
   }
 
-  async loginUser(email: string, password: string) {
+  async loginUser(email: string, password: string): Promise<any> {
     return await signInWithEmailAndPassword(this.auth, email, password);
   }
 

@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Product } from '../models/product';
+import { Product, ProductListDto } from '../models/product';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,11 +12,11 @@ export class ProductsService {
 
   private readonly productsUrl = '/products';
 
-  public getProducts(mock = false): Observable<Product[]> {
+  public getProducts(mock = false): Observable<ProductListDto[]> {
     if (mock) {
-      return this.httpClient.get<Product[]>('../../assets/mocks/products.json');
+      return this.httpClient.get<any[]>('../../assets/mocks/products.json');
     }
-    return this.httpClient.get<Product[]>(
+    return this.httpClient.get<ProductListDto[]>(
       `${environment.api}${this.productsUrl}`
     );
   }

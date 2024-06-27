@@ -12,13 +12,20 @@ export function nutritionIcon(nutrition: string) {
 
   return dictionary[nutrition] || 'Word not found';
 }
-// export function getingredientRating(rating : number){
-//   if (rating=== 1){
-//     return 'green-rating';
-//   } else if (rating === 2)
-//     return 'yellow-rating';
 
-// }
+export function getRiskRateLabel(riskRate: string) {
+  const dictionary = {
+    PA: 'Potential allergen',
+    PI: 'Potential irritant',
+    PED: 'Potential Endocrine disruptor',
+    P: 'Pollutant',
+    I: 'Irritant',
+    NONE: 'NONE',
+  };
+
+
+  return dictionary[riskRate];
+}
 
 export function getRatingClass(rating: number) {
   if (rating < 40) {
