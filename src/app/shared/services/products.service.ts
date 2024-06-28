@@ -21,6 +21,12 @@ export class ProductsService {
     );
   }
 
+  public searchProductsByName(keyword: string): Observable<ProductListDto> {
+    return this.httpClient.get<ProductListDto>(
+      `${environment.api}${this.productsUrl}/search/${keyword}`
+    );
+  }
+
   public getProductBy(id: number) {
     return this.httpClient.get('../../assets/mocks/products.json').pipe();
   }
@@ -28,6 +34,19 @@ export class ProductsService {
     return this.httpClient.post<Product>(
       `${environment.api}${this.productsUrl}`,
       product
+    );
+  }
+
+  public getRecommendedProducts():Observable<ProductListDto[]>  {
+    return this.httpClient.get<ProductListDto[]>(
+      `${environment.api}${this.productsUrl}/recommended`
+    );
+  }
+
+  public addProductToFavorite(id: string) {
+    return this.httpClient.post<Product>(
+      `${environment.api}${this.productsUrl}/${id}/favorites`,
+      {}
     );
   }
 }

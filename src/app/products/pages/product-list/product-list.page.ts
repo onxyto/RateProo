@@ -1,18 +1,35 @@
-import {ActivatedRoute, Router} from '@angular/router';
-import { Component, inject } from '@angular/core';
-import { IonContent } from '@ionic/angular/standalone';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { IonContent, IonSearchbar } from '@ionic/angular/standalone';
 
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { ProductItemComponent } from 'src/app/shared/components/product-item/product-item.component';
 import { CommonModule } from '@angular/common';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  Subject,
+  takeUntil,
+  tap,
+} from 'rxjs';
+import { ProductListDto } from '../../../shared/models/product';
 
 @Component({
-  imports: [CommonModule, IonContent, ProductItemComponent],
+  imports: [CommonModule, IonContent, ProductItemComponent, IonSearchbar],
   selector: 'app-product-list',
   template: `
     <ion-content color="white">
       <h1>Products list</h1>
-      <ng-container *ngFor="let productItem of productList$ | async">
+      <ion-searchbar
+        id="searchbar"
+        mode="ios"
+        color="light"
+        type="text"
+        (ionInput)="onSearchChange($event)"
+        [placeholder]="'search by product'"
+      ></ion-searchbar>
+      <ng-container *ngFor="let productItem of filteredList">
         <app-product-item
           [product]="productItem"
           (showDetailsHandler)="showDetails(productItem.id)"
@@ -24,17 +41,68 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./product-list.page.scss'],
   standalone: true,
 })
-export class ProductListPage {
+export class ProductListPage implements OnInit, OnDestroy {
   private productsService = inject(ProductsService);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
 
-  public productList$ = this.productsService.getProducts();
+  protected unsubscribe$ = new Subject<void>();
+
+  private searchSubject$: Subject<string> = new Subject<string>();
+
+  public productList: ProductListDto[] = [];
+  public filteredList: ProductListDto[] = [];
 
   constructor() {}
 
+  ngOnInit() {
+    this.productsService
+      .getProducts()
+      .pipe(
+        tap((products) => {
+          this.productList = products;
+          this.filteredList = products;
+        }),
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe();
+    this.searchProductsByKeyword();
+  }
+
   public showDetails(id: string) {
-    this.router.navigate(['../product-details', id], {relativeTo: this.route}).then();
+    this.router
+      .navigate(['../product-details', id], { relativeTo: this.route })
+      .then();
+  }
+
+  protected onSearchChange(keyword: any) {
+    this.searchSubject$.next(keyword.detail.value);
+  }
+
+  public searchProductsByKeyword() {
+    this.searchSubject$
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged(),
+        filter(
+          (searchText) => searchText.length >= 3 || searchText.length === 0
+        ),
+        tap(
+          (searchText) =>
+            (this.filteredList = this.productList.filter(
+              (product) =>
+                product.name.toLowerCase().includes(searchText.toLowerCase()) ||
+                product.title.toLowerCase().includes(searchText.toLowerCase())
+            ))
+        ),
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe();
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   // public selectTabs = 'history';

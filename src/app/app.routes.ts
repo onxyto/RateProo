@@ -57,6 +57,11 @@ export const routes: Routes = [
           import('./history/pages/history-list/history-list.page').then((m) => m.HistoryListPage),
       },
       {
+        path: 'recommended-products',
+        loadComponent: () =>
+          import('./products/pages/recommended-products/recommended-products.page').then((m) => m.RecommendedProductsPage),
+      },
+      {
         path: 'scan',
         loadComponent: () =>
           import('./pages/scan/scan.page').then((m) => m.ScanPage),

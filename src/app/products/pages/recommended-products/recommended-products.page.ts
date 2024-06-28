@@ -20,13 +20,9 @@ import {
   IonSegmentButton,
   IonRouterOutlet,
 } from '@ionic/angular/standalone';
-import { ellipse, personCircle, timeOutline } from 'ionicons/icons';
-import { addIcons } from 'ionicons';
 import { IonMenuButton } from '@ionic/angular/standalone';
 import { IonMenu } from '@ionic/angular/standalone';
 
-import { FoodsService } from 'src/app/shared/services/foods.service';
-import { getRatingClass } from 'src/app/shared/utils';
 import { ProductItemComponent } from '../../../shared/components/product-item/product-item.component';
 import { ProductsService } from '../../../shared/services/products.service';
 import { HistoryService } from '../../../shared/services/history.service';
@@ -57,11 +53,11 @@ const componentImports = [
   IonMenu,
 ];
 @Component({
-  selector: 'app-history',
+  selector: 'app-recommended-products',
   template: `
     <ion-content color="white">
-      <h1>History list</h1>
-      <ng-container *ngFor="let productItem of scannedProducts">
+      <h1>Recommended products</h1>
+      <ng-container *ngFor="let productItem of recommendedProducts">
         <app-product-item
           [product]="productItem"
           (showDetailsHandler)="showDetails($event)"
@@ -72,23 +68,21 @@ const componentImports = [
       </ng-container>
     </ion-content>
   `,
-  styleUrls: ['./history-list.page.scss'],
+  styleUrls: ['./recommended-products.page.scss'],
   standalone: true,
   imports: [...componentImports, ProductItemComponent],
 })
-export class HistoryListPage implements OnInit {
-  private historyService = inject(HistoryService);
+export class RecommendedProductsPage implements OnInit {
   private productService = inject(ProductsService);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
 
-  public scannedProducts = [];
-  public scannedProducts$ = this.historyService.getUsersHistory();
+  public recommendedProducts = [];
 
   constructor() {}
 
   ngOnInit(): void {
-    this.loadScannedProducts()
+    this.loadScannedProducts();
   }
 
   public showDetails(id: string) {
@@ -97,27 +91,15 @@ export class HistoryListPage implements OnInit {
       .then();
   }
 
-  public addToFavorite(id: string) {
-    this.productService.addProductToFavorite(id).subscribe();
-  }
-
-  public deleteFromHistory(id: string) {
-    console.log('id', id);
-    this.historyService
-      .removeUsersProductFromHistory(id)
-      .pipe(tap(_ => this.loadScannedProducts()))
-      .subscribe();
-  }
-
   public loadScannedProducts() {
-    this.historyService
-    .getUsersHistory()
-    .pipe(
-      tap((products) => {
-        this.scannedProducts = products;
-      })
-    )
-    .subscribe();
+    this.productService
+      .getRecommendedProducts()
+      .pipe(
+        tap((products) => {
+          this.recommendedProducts = products;
+        })
+      )
+      .subscribe();
   }
 }
 

@@ -26,7 +26,7 @@ export class HistoryService {
   }
 
   public removeUsersProductFromHistory(productId: string) {
-    return this.httpClient.delete<void>(`${environment.api}${this.historysUrl}`)
+    return this.httpClient.delete<void>(`${environment.api}${this.historysUrl}/${productId}`)
   }
 
   public clearUsersHistory() {
