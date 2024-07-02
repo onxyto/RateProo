@@ -45,20 +45,22 @@ import {
         class="product-container"
         [button]="true"
       >
-        <div class="product-img">
-          <ion-img [src]="product.image_url"></ion-img>
-        </div>
-        <div class="product-infos">
-          <h3>{{ product.title }}</h3>
-          <span class="product-name">{{ product.name }}</span>
-          <span class="timer">
-            <ion-icon name="time-outline"></ion-icon
-            ><span>{{ product.created_at | date : 'dd/MM/yyyy' }}</span>
-          </span>
-          <span [class]="_getRatingClass(product.rating)">
-            <ion-icon name="ellipse" class="c"></ion-icon>
-            <span>{{ product.rating }}</span>
-          </span>
+        <div class="product-content">
+          <div class="product-img">
+            <ion-img [src]="product.image_url"></ion-img>
+          </div>
+          <div class="product-infos">
+            <h3>{{ product.title }}</h3>
+            <span class="product-name">{{ product.name }}</span>
+            <div class="timer">
+              <ion-icon name="time-outline"></ion-icon
+              ><span>{{ product.created_at | date : 'dd/MM/yyyy' }}</span>
+            </div>
+            <div [class]="_getRatingClass(product.rating)">
+              <ion-icon name="ellipse" class="c"></ion-icon>
+              <span>{{ product.rating }}</span>
+            </div>
+          </div>
         </div>
       </ion-item>
 
@@ -72,6 +74,7 @@ import {
       </ion-item-options>
     </ion-item-sliding>
   `,
+  styleUrls: ['./product-item.component.scss'],
   standalone: true,
 })
 export class ProductItemComponent {

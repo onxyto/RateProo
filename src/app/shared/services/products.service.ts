@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Product, ProductListDto } from '../models/product';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -31,13 +31,17 @@ export class ProductsService {
     return this.httpClient.get('../../assets/mocks/products.json').pipe();
   }
   public createProduct(product: Product): Observable<Product> {
-    return this.httpClient.post<Product>(
-      `${environment.api}${this.productsUrl}`,
-      product
-    );
+    return this.httpClient
+      .post<Product>(`${environment.api}/products/create`, product)
+      .pipe(
+        catchError((error) => {
+          console.error('Error creating product:', error);
+          return throwError(error); // Rethrow the error to propagate it
+        })
+      );
   }
 
-  public getRecommendedProducts():Observable<ProductListDto[]>  {
+  public getRecommendedProducts(): Observable<ProductListDto[]> {
     return this.httpClient.get<ProductListDto[]>(
       `${environment.api}${this.productsUrl}/recommended`
     );
@@ -47,6 +51,11 @@ export class ProductsService {
     return this.httpClient.post<Product>(
       `${environment.api}${this.productsUrl}/${id}/favorites`,
       {}
+    );
+  }
+  public removeProductFromFavorite(id: string): Observable<void> {
+    return this.httpClient.delete<void>(
+      `${environment.api}${this.productsUrl}/${id}/favorites`
     );
   }
 }

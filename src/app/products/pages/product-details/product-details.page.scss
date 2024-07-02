@@ -18,9 +18,79 @@
   }
 }
 
+.title {
+  margin-left: 10px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+// .header {
+//   color: black;
+//   margin-left: 20px;
+//   margin-top: 20px;
+// }
+// .Description {
+//   margin-top: 10px;
+//   margin-bottom: 10px;
+// }
+// .storagetype {
+//   margin-top: 10px;
+//   margin-bottom: 10px;
+// }
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  padding: 5px;
+}
+
+.card-img {
+  width: 200px;
+}
+
+.card-infos {
+  span {
+    font-size: 1.2em;
+  }
+}
 
 .title {
   margin-left: 10px;
   font-weight: 600;
   text-transform: capitalize;
+}
+
+.header {
+  color: black;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+/* Improved styles for description and storage type */
+.Description,
+.storagetype {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #e8eaf6; /* Light blue background */
+  color: #333; /* Dark color for text */
+  font-size: 1em;
+  line-height: 1.6;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.Description p {
+  margin: 0;
+  font-style: italic;
+  font-weight: 50px;
+  color: #c054c0; /* Blue color for emphasis */
+}
+
+.storagetype {
+  font-weight: bold;
+  text-transform: capitalize;
+  color: #070707; /* Orange color for distinction */
 }

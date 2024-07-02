@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormGroup,
-  FormsModule,
   FormBuilder,
   Validators,
   FormArray,
+  ReactiveFormsModule,
+  FormsModule,
 } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 import {
   IonContent,
   IonHeader,
@@ -20,16 +20,13 @@ import {
   IonCardTitle,
   IonCardContent,
   IonInput,
-  IonRadio,
-  IonRadioGroup,
-  IonText,
+  IonSelect,
+  IonSelectOption,
   IonTextarea,
   IonButton,
   IonList,
 } from '@ionic/angular/standalone';
 import { HttpClient } from '@angular/common/http';
-import { Product } from 'src/app/shared/models/product';
-import { ProductsService } from 'src/app/shared/services/products.service';
 
 @Component({
   selector: 'app-add-products',
@@ -41,9 +38,6 @@ import { ProductsService } from 'src/app/shared/services/products.service';
     IonButton,
     ReactiveFormsModule,
     IonTextarea,
-    IonText,
-    IonRadioGroup,
-    IonRadio,
     IonInput,
     IonCardContent,
     IonCardTitle,
@@ -62,99 +56,127 @@ import { ProductsService } from 'src/app/shared/services/products.service';
 export class AddProductsPage implements OnInit {
   productForm: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private productService: ProductsService
-  ) {}
+  constructor(private fb: FormBuilder, private http: HttpClient) {}
+
   ngOnInit() {
     this.productForm = this.fb.group({
+      products: this.fb.array([this.createProductFormGroup()]),
+    });
+  }
+
+  createProductFormGroup(): FormGroup {
+    return this.fb.group({
       ean: ['', Validators.required],
       name: ['', Validators.required],
-      title: ['', Validators.required],
-      imageurl: ['', Validators.required],
-      rating: ['', Validators.required],
+      title: [''],
+      imageurl: [''],
+      rating: [''],
       type: ['', Validators.required],
-      description: ['', Validators.required],
-      storagetype: ['', Validators.required],
-      // recommended: ['', Validators.required],
-      nutritions: this.fb.array([this.createNutritionFormGroup()]),
-      ingredients: this.fb.array([this.createIngredientFormGroup()]),
-    });
-  }
-  get nutritions(): FormArray {
-    return this.productForm.get('nutritions') as FormArray;
-  }
-
-  createNutritionFormGroup(): FormGroup {
-    return this.fb.group({
-      name: ['', Validators.required],
-      quantity: ['', Validators.required],
-      symbol: ['', Validators.required],
+      description: [''],
+      storagetype: [''],
+      nutritions: this.fb.array([]),
+      ingredients: this.fb.array([]),
     });
   }
 
-  addNutrition(): void {
-    this.nutritions.push(this.createNutritionFormGroup());
+  get products() {
+    return this.productForm.get('products') as FormArray;
   }
 
-  removeNutrition(index: number): void {
-    this.nutritions.removeAt(index);
-  }
-  get ingredients(): FormArray {
-    return this.productForm.get('ingredients') as FormArray;
-  }
-  createIngredientFormGroup(): FormGroup {
-    return this.fb.group({
-      name: ['', Validators.required],
-      riskrate: ['', Validators.required],
-      healthrisk: ['', Validators.required],
-      scientificsources: ['', Validators.required],
-      description: ['', Validators.required],
-    });
-  }
-  addIngredient(): void {
-    this.ingredients.push(this.createIngredientFormGroup());
+  addProduct() {
+    this.products.push(this.createProductFormGroup());
   }
 
-  removeIngredient(index: number): void {
-    this.ingredients.removeAt(index);
+  removeProduct(index: number) {
+    this.products.removeAt(index);
   }
-  onSubmit() {
+
+  getNutritionsFormGroup(productIndex: number): FormArray {
+    return this.products.at(productIndex).get('nutritions') as FormArray;
+  }
+
+  addNutrition(productIndex: number) {
+    this.getNutritionsFormGroup(productIndex).push(
+      this.fb.group({
+        name: [''],
+        quantity: [''],
+        symbol: [''],
+      })
+    );
+  }
+
+  removeNutrition(productIndex: number, nutritionIndex: number) {
+    this.getNutritionsFormGroup(productIndex).removeAt(nutritionIndex);
+  }
+
+  getIngredientsFormGroup(productIndex: number): FormArray {
+    return this.products.at(productIndex).get('ingredients') as FormArray;
+  }
+
+  addIngredient(productIndex: number) {
+    this.getIngredientsFormGroup(productIndex).push(
+      this.fb.group({
+        name: [''],
+        riskrate: [''],
+        healthrisk: [''],
+        description: [''],
+        scientificsources: [''],
+      })
+    );
+  }
+
+  removeIngredient(productIndex: number, ingredientIndex: number) {
+    this.getIngredientsFormGroup(productIndex).removeAt(ingredientIndex);
+  }
+
+  submitForm() {
     if (this.productForm.valid) {
-      const newProduct: Product = this.productForm.value;
-      this.productService.createProduct(newProduct).subscribe((response) => {
-        console.log('Product created!', response);
-      });
+      console.log('Form Data:', this.productForm.value);
+
+      // Replace with your API endpoint
+      const apiUrl = 'http://localhost:3000/products/create';
+
+      this.http.post(apiUrl, this.productForm.value).subscribe(
+        (response) => {
+          console.log('Data sent successfully!', response);
+          this.productForm.reset();
+        },
+        (error) => {
+          console.error('Error sending data:', error);
+        }
+      );
+    } else {
+      console.error('Form is invalid. Cannot submit.');
     }
   }
-}
 
-// addIngredient() {
-//   this.product.ingredients.push({
-//     name: '',
-//     quantity: '',
-//     symbol: '',
-//   });
-// }
-// product: any = {
-//   ean: '',
-//   name: '',
-//   title: '',
-//   imageurl: '',
-//   rating: '',
-//   type: '',
-//   description: '',
-//   storagetype: '',
-//   recommended: '',
-//   ingredients: [],
-//   nutritions: [],
-// };
-// async addProduct() {
-//   const apiUrl = 'http://localhost:3000/products';
-//   try {
-//     const response = await this.http.post(apiUrl, this.product).toPromise();
-//     console.log(response);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
+  // addIngredient() {
+  //   this.product.ingredients.push({
+  //     name: '',
+  //     quantity: '',
+  //     symbol: '',
+  //   });
+  // }
+  // product: any = {
+  //   ean: '',
+  //   name: '',
+  //   title: '',
+  //   imageurl: '',
+  //   rating: '',
+  //   type: '',
+  //   description: '',
+  //   storagetype: '',
+  //   recommended: '',
+  //   ingredients: [],
+  //   nutritions: [],
+  // };
+  // async addProduct() {
+  //   const apiUrl = 'http://localhost:3000/products';
+  //   try {
+  //     const response = await this.http.post(apiUrl, this.product).toPromise();
+  //     console.log(response);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+}

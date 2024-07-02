@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CommonModule, Location} from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
   IonContent,
@@ -35,7 +35,7 @@ import {
   restaurantOutline,
   waterOutline,
   close,
-  arrowBackOutline
+  arrowBackOutline,
 } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { ActivatedRoute } from '@angular/router';
@@ -46,8 +46,8 @@ import {
 } from 'src/app/shared/models/product';
 import { Observable } from 'rxjs';
 import { getRatingClass } from 'src/app/shared/utils';
-import {NutritionsListComponent} from "../../components/nutritions-list/nutritions-list.component";
-import {IngredientsListComponent} from "../../components/ingredients-list/ingredients-list.component";
+import { NutritionsListComponent } from '../../components/nutritions-list/nutritions-list.component';
+import { IngredientsListComponent } from '../../components/ingredients-list/ingredients-list.component';
 
 const componentIcons = {
   handRightOutline,
@@ -61,7 +61,7 @@ const componentIcons = {
   flameOutline,
   restaurantOutline,
   close,
-  arrowBackOutline
+  arrowBackOutline,
 };
 @Component({
   imports: [
@@ -132,16 +132,19 @@ const componentIcons = {
 
         <ng-container *ngIf="showNutritions(productDetails)">
           <ion-card>
-            <ion-card-header>
+            <div class="header">
               <h3>Product Overview</h3>
-            </ion-card-header>
+            </div>
             <ion-card-content>
               <h3>Description:</h3>
-              <p>
-                {{ productDetails.description }}
-              </p>
-              <div>
-                <h3>StorageType:</h3>
+              <div class="Description">
+                <p>
+                  {{ productDetails.description }}
+                </p>
+              </div>
+
+              <h3>StorageType:</h3>
+              <div class="storagetype">
                 {{ productDetails.storage_type }}
               </div>
             </ion-card-content>

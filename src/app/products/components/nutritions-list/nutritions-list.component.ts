@@ -7,7 +7,10 @@ import {
   IonList,
   IonCardContent,
   IonCardHeader,
-  IonCardSubtitle, IonItem, IonLabel, IonBadge,
+  IonCardSubtitle,
+  IonItem,
+  IonLabel,
+  IonBadge,
 } from '@ionic/angular/standalone';
 import {
   checkmarkCircle,
@@ -69,40 +72,36 @@ const componentIcons = {
       <ion-list>
         <ion-item *ngFor="let nutrition of nutritions">
           <div class="nutrition-item">
-            <div class="nutrition-infos">
+            <div class="icon">
               <ion-icon slot="start" [name]="getNutritionIcon(nutrition.name)">
               </ion-icon>
+            </div>
+            <div class="nutrition-infos">
               <ion-label>{{ nutrition.name }}</ion-label>
-              <ion-badge slot="end"
-                >{{ nutrition.quantity }}
-                <span *ngIf="nutrition.symbol !== 'none'">
-                  {{ nutrition.symbol }}
-                </span></ion-badge
-              >
-
-              <ion-icon
-                *ngIf="
-                  !_getNutritionRatingRecommended(
-                    nutrition.name,
-                    nutrition.quantity
-                  );
-                  else successIcon
-                "
-                slot="end"
-                [color]="'danger'"
-                name="close"
-              ></ion-icon>
-              <ng-template #successIcon>
-                <ion-icon
-                  slot="end"
-                  [color]="'success'"
-                  name="checkmark-outline"
-                ></ion-icon>
-              </ng-template>
+              <div class="pn">{{ nutrition.rating }}</div>
             </div>
-            <div class="nutrition-rating-label">
-              {{ nutrition.rating }}
-            </div>
+          </div>
+          <div class="grams">
+            <ion-badge slot="end"
+              >{{ nutrition.quantity }}
+              <span *ngIf="nutrition.symbol !== 'none'">
+                {{ nutrition.symbol }}
+              </span></ion-badge
+            >
+            <ion-icon
+              *ngIf="
+                !_getNutritionRatingRecommended(
+                  nutrition.name,
+                  nutrition.quantity
+                );
+                else successIcon
+              "
+              [color]="'danger'"
+              name="close"
+            ></ion-icon>
+            <ng-template #successIcon>
+              <ion-icon [color]="'success'" name="checkmark-outline"></ion-icon>
+            </ng-template>
           </div>
         </ion-item>
       </ion-list>

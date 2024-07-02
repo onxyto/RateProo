@@ -4,53 +4,53 @@ h1 {
   padding: 5px;
 }
 
-ion-item {
-  display: flex;
-  flex-direction: row;
+// ion-item {
+//   display: flex;
+//   flex-direction: row;
 
-  .product-img {
-    max-width: 400px;
-  }
+//   .product-img {
+//     max-width: 400px;
+//   }
 
-  .product-infos {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+//   .product-infos {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 10px;
 
-    h2 {
-      font-size: 1em;
-    }
+//     h2 {
+//       font-size: 1em;
+//     }
 
-    .timer {
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
+//     .timer {
+//       display: flex;
+//       flex-direction: row;
+//       gap: 10px;
 
-      font-weight: 400;
-      color: gray;
-    }
+//       font-weight: 400;
+//       color: gray;
+//     }
 
-    .product-name {
-      margin-top: 7px;
-      font-weight: 400;
-      color: gray;
-    }
+//     .product-name {
+//       margin-top: 7px;
+//       font-weight: 400;
+//       color: gray;
+//     }
 
-    .rate {
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-      font-weight: 400;
-      color: gray;
-      .r {
-        color: red;
-      }
-      .o {
-        color: orange;
-      }
-      .c {
-        color: green;
-      }
-    }
-  }
-}
+//     .rate {
+//       display: flex;
+//       flex-direction: row;
+//       gap: 10px;
+//       font-weight: 400;
+//       color: gray;
+//       .r {
+//         color: red;
+//       }
+//       .o {
+//         color: orange;
+//       }
+//       .c {
+//         color: green;
+//       }
+//     }
+//   }
+// }

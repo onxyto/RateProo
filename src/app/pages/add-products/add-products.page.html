@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>Add Product Form</ion-title>
   </ion-toolbar>
@@ -177,5 +177,221 @@
     <ion-button type="submit" expand="block" [disabled]="!productForm.valid">
       Add Product
     </ion-button>
+  </form>
+</ion-content> -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Product Form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="productForm" (ngSubmit)="submitForm()">
+    <ion-card
+      *ngFor="let productGroup of products.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <ion-card-header>
+        <ion-card-title>Product {{ i + 1 }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-item>
+        <ion-label>EAN</ion-label>
+        <ion-input
+          formControlName="ean"
+          placeholder="Enter EAN"
+          type="text"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Name</ion-label>
+        <ion-input
+          formControlName="name"
+          placeholder="Enter Name"
+          type="text"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Title</ion-label>
+        <ion-input
+          formControlName="title"
+          placeholder="Enter Title"
+          type="text"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Image URL</ion-label>
+        <ion-input
+          formControlName="imageurl"
+          placeholder="Enter Image URL"
+          type="text"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Rating</ion-label>
+        <ion-input
+          formControlName="rating"
+          placeholder="Enter Rating"
+          type="number"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Type</ion-label>
+        <ion-radio-group formControlName="type">
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label>Food</ion-label>
+                <ion-radio value="FOOD"></ion-radio>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label>Cosmetic</ion-label>
+                <ion-radio value="COSMETIC"></ion-radio>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label>Drink</ion-label>
+                <ion-radio value="DRINK"></ion-radio>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-radio-group>
+      </ion-item>
+
+      <ion-item
+        *ngIf="productGroup.get('type').value === 'FOOD' || productGroup.get('type').value === 'DRINK'"
+      >
+        <ion-label>Description</ion-label>
+        <ion-textarea
+          formControlName="description"
+          placeholder="Enter Description"
+        ></ion-textarea>
+      </ion-item>
+
+      <ion-item *ngIf="productGroup.get('type').value === 'COSMETIC'">
+        <ion-label>Storage Type</ion-label>
+        <ion-textarea
+          formControlName="storagetype"
+          placeholder="Enter Storage Type"
+        ></ion-textarea>
+      </ion-item>
+
+      <ion-card-content
+        *ngIf="productGroup.get('type').value === 'FOOD' || productGroup.get('type').value === 'DRINK'"
+      >
+        <ion-card-title>Nutrition Details</ion-card-title>
+        <div formArrayName="nutritions">
+          <div
+            *ngFor="let nutrition of getNutritionsFormGroup(i).controls; let j = index"
+            [formGroupName]="j"
+          >
+            <ion-item>
+              <ion-label>Name</ion-label>
+              <ion-input
+                formControlName="name"
+                placeholder="Enter Nutrition Name"
+                type="text"
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Quantity</ion-label>
+              <ion-input
+                formControlName="quantity"
+                placeholder="Enter Quantity"
+                type="text"
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Symbol</ion-label>
+              <ion-input
+                formControlName="symbol"
+                placeholder="Enter Symbol"
+                type="text"
+              ></ion-input>
+            </ion-item>
+            <ion-button (click)="removeNutrition(i, j)" fill="clear"
+              >Remove</ion-button
+            >
+          </div>
+        </div>
+        <ion-button (click)="addNutrition(i)" expand="block"
+          >Add Nutrition</ion-button
+        >
+      </ion-card-content>
+
+      <ion-card-content *ngIf="productGroup.get('type').value === 'COSMETIC'">
+        <ion-card-title>Ingredients Details</ion-card-title>
+        <div formArrayName="ingredients">
+          <div
+            *ngFor="let ingredient of getIngredientsFormGroup(i).controls; let j = index"
+            [formGroupName]="j"
+          >
+            <ion-item>
+              <ion-label>Name</ion-label>
+              <ion-input
+                formControlName="name"
+                placeholder="Enter Ingredient Name"
+                type="text"
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Risk Rate</ion-label>
+              <ion-input
+                formControlName="riskrate"
+                placeholder="Enter Risk Rate"
+                type="number"
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Health Risk</ion-label>
+              <ion-input
+                formControlName="healthrisk"
+                placeholder="Enter Health Risk"
+                type="text"
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Description</ion-label>
+              <ion-textarea
+                formControlName="description"
+                placeholder="Enter Description"
+              ></ion-textarea>
+            </ion-item>
+            <ion-item>
+              <ion-label>Scientific Sources</ion-label>
+              <ion-textarea
+                formControlName="scientificsources"
+                placeholder="Enter Scientific Sources"
+              ></ion-textarea>
+            </ion-item>
+            <ion-button (click)="removeIngredient(i, j)" fill="clear"
+              >Remove</ion-button
+            >
+          </div>
+        </div>
+        <ion-button (click)="addIngredient(i)" expand="block"
+          >Add Ingredient</ion-button
+        >
+      </ion-card-content>
+
+      <ion-button (click)="removeProduct(i)" expand="full" fill="clear"
+        >Remove Product</ion-button
+      >
+    </ion-card>
+
+    <ion-button (click)="addProduct()" expand="block"
+      >Add Another Product</ion-button
+    >
+    <ion-button type="submit" expand="block" [disabled]="!productForm.valid"
+      >Submit</ion-button
+    >
   </form>
 </ion-content>

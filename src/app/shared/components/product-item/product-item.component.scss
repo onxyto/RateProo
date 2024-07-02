@@ -1,50 +1,108 @@
-ion-item {
+// ion-item {
+//   display: flex;
+
+//   gap: 20px;
+//   align-items: center;
+
+//   padding: 5px;
+.product-container {
   display: flex;
-  flex-direction: row;
-
-  .product-img {
-    max-width: 400px;
-  }
-
-  .product-infos {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    h2 {
-      font-size: 1em;
-    }
-
-    .timer {
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-
-      font-weight: 400;
-      color: gray;
-    }
-
-    .product-name {
-      margin-top: 7px;
-      font-weight: 400;
-      color: gray;
-    }
-
-    .rate {
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-      font-weight: 400;
-      color: gray;
-      .r {
-        color: red;
-      }
-      .o {
-        color: orange;
-      }
-      .c {
-        color: green;
-      }
-    }
-  }
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #e0e0e0;
 }
+.product-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Styling for the product image */
+.product-img {
+  max-width: 150px;
+  max-height: 150px;
+  margin-right: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.product-img ion-img {
+  width: 100%;
+  height: auto;
+}
+
+/* Styling for the product information */
+.product-infos {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.product-infos h3 {
+  font-size: 1.2em;
+  margin: 0;
+  color: #333;
+  font-weight: bold;
+}
+
+.product-infos .product-name {
+  font-size: 1em;
+  color: #666;
+  font-weight: 400;
+}
+// .product-img {
+//   max-width: 200px;
+// }
+// .product-name {
+//   color: gray;
+// }
+// .timer {
+//   margin-top: 20px;
+// }
+//   .product-infos {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 10px;
+
+//     h2 {
+//       font-size: 1em;
+//     }
+
+// .timer {
+//   display: flex;
+//   flex-direction: row;
+//   gap: 10px;
+
+//   font-weight: 400;
+//   color: gray;
+// }
+
+// .product-name {
+//   margin-top: 7px;
+//   font-weight: 400;
+//   color: gray;
+// }
+
+//   .rate {
+//     display: flex;
+//     flex-direction: row;
+//     gap: 10px;
+//     font-weight: 400;
+//     color: gray;
+//     .r {
+//       color: red;
+//     }
+//     .o {
+//       color: orange;
+//     }
+//     .c {
+//       color: green;
+//     }
+//   }
+// }
+//   }
+// }
