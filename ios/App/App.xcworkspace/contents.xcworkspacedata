@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:"
+      name = "">
+      <FileRef
+         location = "group:App.xcodeproj">
+      </FileRef>
+      <Group
+         location = "group:repos"
+         name = "repos">
+      </Group>
+      <Group
+         location = "group:App"
+         name = "App">
+         <Group
+            location = "group:Assets.xcassets"
+            name = "Assets.xcassets">
+            <Group
+               location = "group:AppIcon.appiconset"
+               name = "AppIcon.appiconset">
+               <FileRef
+                  location = "group:AppIcon-512@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <Group
+               location = "group:Splash.imageset"
+               name = "Splash.imageset">
+               <FileRef
+                  location = "group:splash-2732x2732.png">
+               </FileRef>
+               <FileRef
+                  location = "group:splash-2732x2732-1.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+               <FileRef
+                  location = "group:splash-2732x2732-2.png">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Base.lproj"
+            name = "Base.lproj">
+            <FileRef
+               location = "group:LaunchScreen.storyboard">
+            </FileRef>
+            <FileRef
+               location = "group:Main.storyboard">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:config.xml">
+         </FileRef>
+         <Group
+            location = "group:public"
+            name = "public">
+            <FileRef
+               location = "group:8066.005df1abf71fcd26.js">
+            </FileRef>
+            <FileRef
+               location = "group:7372.5ff8a0a3fd61642b.js">
+            </FileRef>
+            <FileRef
+               location = "group:9311.0c27a63ae7f9eb50.js">
+            </FileRef>
+            <FileRef
+               location = "group:6631.144197ebc7db792f.js">
+            </FileRef>
+            <FileRef
+               location = "group:main.60aa56b3bd6e43dd.js">
+            </FileRef>
+            <FileRef
+               location = "group:2415.254d1241d4f9c72c.js">
+            </FileRef>
+            <FileRef
+               location = "group:5887.31996dd3eccfa2f4.js">
+            </FileRef>
+            <FileRef
+               location = "group:5100.bd5b1ddc628a5e1a.js">
+            </FileRef>
+            <FileRef
+               location = "group:scananime.95ccb675754f9ca8.jpg">
+            </FileRef>
+            <FileRef
+               location = "group:5712.743e9b7945b10d67.js">
+            </FileRef>
+            <FileRef
+               location = "group:9013.5a5f985f2b44cc85.js">
+            </FileRef>
+            <FileRef
+               location = "group:4699.0b8e6cdd5b815b92.js">
+            </FileRef>
+            <FileRef
+               location = "group:9977.33164afa3f4d0fc1.js">
+            </FileRef>
+            <FileRef
+               location = "group:6844.4e41ab72dc57933f.js">
+            </FileRef>
+            <FileRef
+               location = "group:index.html">
+            </FileRef>
+            <FileRef
+               location = "group:common.1e8a6594b9fb1718.js">
+            </FileRef>
+            <FileRef
+               location = "group:7700.a0004b5e0c47dccd.js">
+            </FileRef>
+            <FileRef
+               location = "group:polyfills.8a18514c71b568ca.js">
+            </FileRef>
+            <FileRef
+               location = "group:4305.804307da96a8a94d.js">
+            </FileRef>
+            <FileRef
+               location = "group:6521.3e95ecb7b9621f87.js">
+            </FileRef>
+            <FileRef
+               location = "group:5493.9dac05c0dddb0789.js">
+            </FileRef>
+            <FileRef
+               location = "group:8193.dc1f08141368ed44.js">
+            </FileRef>
+            <FileRef
+               location = "group:8361.29b4a4b3cc02cef9.js">
+            </FileRef>
+            <FileRef
+               location = "group:3511.f0d869f2c970165a.js">
+            </FileRef>
+            <FileRef
+               location = "group:cordova.js">
+            </FileRef>
+            <FileRef
+               location = "group:1102.5af9af36dcc7fd39.js">
+            </FileRef>
+            <FileRef
+               location = "group:7273.0124ba714d93ee1d.js">
+            </FileRef>
+            <FileRef
+               location = "group:5222.faaee0391653a209.js">
+            </FileRef>
+            <FileRef
+               location = "group:3814.8ed2965c23bf1287.js">
+            </FileRef>
+            <FileRef
+               location = "group:8584.5c9f13eba9e05c48.js">
+            </FileRef>
+            <FileRef
+               location = "group:8814.53673f89031e63cd.js">
+            </FileRef>
+            <FileRef
+               location = "group:3rdpartylicenses.txt">
+            </FileRef>
+            <FileRef
+               location = "group:runtime.bb9ffe3c9c155232.js">
+            </FileRef>
+            <FileRef
+               location = "group:6433.cdae5ea52414db98.js">
+            </FileRef>
+            <FileRef
+               location = "group:7179.afc91e02a6706ccf.js">
+            </FileRef>
+            <FileRef
+               location = "group:798.ba65a55feb05159e.js">
+            </FileRef>
+            <FileRef
+               location = "group:1293.96ce3e233214328b.js">
+            </FileRef>
+            <FileRef
+               location = "group:3964.45fa09afc262fe3e.js">
+            </FileRef>
+            <FileRef
+               location = "group:8805.114444b3008b56bf.js">
+            </FileRef>
+            <FileRef
+               location = "group:441.3999e9f9b8e1e7dd.js">
+            </FileRef>
+            <FileRef
+               location = "group:1689.e41760c4e3a89ad7.js">
+            </FileRef>
+            <FileRef
+               location = "group:1459.e4c7917a8eeaa08f.js">
+            </FileRef>
+            <FileRef
+               location = "group:8314.9928f6a6dbb8064a.js">
+            </FileRef>
+            <FileRef
+               location = "group:6024.c0a3186d331fb7b9.js">
+            </FileRef>
+            <FileRef
+               location = "group:4463.91d88a03687d7210.js">
+            </FileRef>
+            <FileRef
+               location = "group:1049.34f6c463a39aa15c.js">
+            </FileRef>
+            <FileRef
+               location = "group:styles.850b28682d6c05a8.css">
+            </FileRef>
+            <FileRef
+               location = "group:2348.ca7fdf17e14deba1.js">
+            </FileRef>
+            <FileRef
+               location = "group:8603.b2649371db3cbc4a.js">
+            </FileRef>
+            <FileRef
+               location = "group:7240.b8e57dcb6031782d.js">
+            </FileRef>
+            <FileRef
+               location = "group:9344.091a466685831c83.js">
+            </FileRef>
+            <FileRef
+               location = "group:7030.7ab32b640109e758.js">
+            </FileRef>
+            <FileRef
+               location = "group:7428.e85040c9953376a2.js">
+            </FileRef>
+            <FileRef
+               location = "group:4406.2d7cf146037d9297.js">
+            </FileRef>
+            <FileRef
+               location = "group:4183.09b8a9d47f67d8df.js">
+            </FileRef>
+            <FileRef
+               location = "group:2075.cb6ddd4bc1a5a0d5.js">
+            </FileRef>
+            <FileRef
+               location = "group:5777.fc678501728c8cac.js">
+            </FileRef>
+            <FileRef
+               location = "group:9650.592487a5ce00b945.js">
+            </FileRef>
+            <FileRef
+               location = "group:2560.c80212e75659ddeb.js">
+            </FileRef>
+            <FileRef
+               location = "group:6840.da9df5aacf34c10a.js">
+            </FileRef>
+            <FileRef
+               location = "group:6499.e69c1df0b295d504.js">
+            </FileRef>
+            <FileRef
+               location = "group:5197.1056cd67a49e0883.js">
+            </FileRef>
+            <FileRef
+               location = "group:7441.72297eb7e3a937b0.js">
+            </FileRef>
+            <FileRef
+               location = "group:5949.8210de8a0442ff4a.js">
+            </FileRef>
+            <FileRef
+               location = "group:4793.d16deb6fb5334e3e.js">
+            </FileRef>
+            <FileRef
+               location = "group:4591.d9b12a98e9971eaa.js">
+            </FileRef>
+            <FileRef
+               location = "group:8477.d515425e6f681c6d.js">
+            </FileRef>
+            <FileRef
+               location = "group:cordova_plugins.js">
+            </FileRef>
+            <FileRef
+               location = "group:3687.2732dc8e3bd59177.js">
+            </FileRef>
+            <FileRef
+               location = "group:7720.e8a10c8af7ee8b3d.js">
+            </FileRef>
+            <FileRef
+               location = "group:7338.5e92b19da9b9f933.js">
+            </FileRef>
+            <FileRef
+               location = "group:1260.5bbae41cbfc01cf3.js">
+            </FileRef>
+            <FileRef
+               location = "group:5991.8afba3ff636a6871.js">
+            </FileRef>
+            <FileRef
+               location = "group:964.ecd5df49400569bf.js">
+            </FileRef>
+            <FileRef
+               location = "group:1169.d2c61fff22ad255d.js">
+            </FileRef>
+            <FileRef
+               location = "group:2375.b3fe256afb212c04.js">
+            </FileRef>
+            <FileRef
+               location = "group:4171.c35ecd5b6106cb37.js">
+            </FileRef>
+            <FileRef
+               location = "group:3506.f7207b5a8e0d38bd.js">
+            </FileRef>
+            <FileRef
+               location = "group:2885.900b37bdd719477d.js">
+            </FileRef>
+            <FileRef
+               location = "group:8970.9d5f0fe8192d11df.js">
+            </FileRef>
+            <FileRef
+               location = "group:7356.911eacb1ce959b5e.js">
+            </FileRef>
+            <FileRef
+               location = "group:3162.f8cf218ae35b8e15.js">
+            </FileRef>
+            <FileRef
+               location = "group:1577.ebdeb15f41672f91.js">
+            </FileRef>
+            <FileRef
+               location = "group:870.6e2ebe8a63f200f6.js">
+            </FileRef>
+            <FileRef
+               location = "group:7076.7eedee385c613844.js">
+            </FileRef>
+            <FileRef
+               location = "group:7402.b3db0eb03822e97c.js">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:capacitor.config.json">
+         </FileRef>
+         <FileRef
+            location = "group:AppDelegate.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Info.plist">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:App.xcworkspace">
+      </FileRef>
+      <FileRef
+         location = "group:Podfile">
+      </FileRef>
+      <Group
+         location = "group:apps"
+         name = "apps">
+      </Group>
+   </Group>
+</Workspace>

@@ -105,7 +105,7 @@ export class ScanPage implements OnDestroy {
         return;
       }*/
       const { barcodes } = await BarcodeScanner.scan();
-      barcodeList.push(...barcodes);
+      this.historyService.addProductToUsersHistory(barcodes[0].displayValue).pipe(takeUntil(this.unsubscribe$), tap(_ => console.log('DONE'))).subscribe();
     }
 
     this.barcodes.push(...barcodeList);
